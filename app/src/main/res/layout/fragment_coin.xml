@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.fragment.rules.CoinFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/dp10"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cvLogo"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            app:layout_constraintStart_toEndOf="@id/cvLogo"
+            app:layout_constraintTop_toTopOf="@id/cvLogo" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp8"
+            android:textColor="@color/red"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintBottom_toBottomOf="@id/cvLogo"
+            app:layout_constraintStart_toEndOf="@id/cvLogo" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="@string/coin_project"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+
+        <TextView
+            android:id="@+id/tvProject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvDet"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="@string/details"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/tvProject" />
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/tvDet" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/clImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp130"
+            android:layout_marginTop="@dimen/dp10"
+            android:visibility="visible"
+            app:cardCornerRadius="@dimen/dp5"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintTop_toBottomOf="@id/tvDetails">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_image_fream" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

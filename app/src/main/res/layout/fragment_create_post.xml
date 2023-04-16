@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    tools:context=".ui.fragment.posts.CreatePostFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/hi"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hi"
+            android:textColor="@color/yellow"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvW1"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="@string/what_think1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/hi" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:gravity="center|start"
+            android:hint="@string/post_tittle"
+            android:inputType="text"
+            android:lines="1"
+            android:paddingHorizontal="@dimen/dp15"
+            android:paddingVertical="@dimen/dp15"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/tvW1" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:gravity="top|start"
+            android:hint="@string/post_tittle"
+            android:inputType="textMultiLine"
+            android:minHeight="@dimen/dp160"
+            android:paddingHorizontal="@dimen/dp15"
+            android:paddingVertical="@dimen/dp15"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+        <TextView
+            android:id="@+id/tvAddImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/ripple_effect"
+            android:gravity="center"
+            android:padding="@dimen/dp8"
+            android:text="@string/add_an_image"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:drawableStartCompat="@drawable/ic_add_image"
+            app:layout_constraintEnd_toStartOf="@id/line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtText" />
+
+        <TextView
+            android:id="@+id/tvAddVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/ripple_effect"
+            android:gravity="center"
+            android:padding="@dimen/dp8"
+            android:text="@string/add_a_video"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:drawableStartCompat="@drawable/ic_video"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/line"
+            app:layout_constraintTop_toBottomOf="@id/txtText" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/tvAddImage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@id/clVideo"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp200"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="@id/ivDeleteFile" />
+
+                <ImageView
+                    android:id="@+id/ivDeleteFile"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:background="@drawable/round_ripple_w"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_baseline_cancel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/red" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvImagesList"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp200"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvSend"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginVertical="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp25"
+            android:backgroundTint="@color/them"
+            android:text="@string/send_now"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/clMedia" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

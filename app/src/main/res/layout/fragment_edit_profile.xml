@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    tools:context=".ui.fragment.profile.EditProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvW"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:gravity="center"
+            android:text="@string/edit_profile_message"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp25"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_profile_form"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:lines="1"
+            android:paddingHorizontal="@dimen/dp15"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/tvW" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_call"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:layoutDirection="ltr"
+            android:lines="1"
+            android:maxLength="10"
+            android:paddingHorizontal="@dimen/dp15"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtName" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="@dimen/dp15"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/txtPhone" />
+
+        <TextView
+            android:id="@+id/tvSave"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:backgroundTint="@color/them"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/txtEmail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

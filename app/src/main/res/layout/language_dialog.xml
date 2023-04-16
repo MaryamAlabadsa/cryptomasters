@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_edg_10"
+        android:backgroundTint="@color/white"
+        android:padding="@dimen/dp15">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/tvArabic"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48"
+                android:background="@drawable/ripple_effect"
+                android:buttonTint="@color/yellow"
+                android:gravity="center|start"
+                android:paddingHorizontal="@dimen/dp5"
+                android:text="@string/arabic"
+                android:textColor="@color/them_dark"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/tvEnglish"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48"
+                android:layout_marginTop="@dimen/dp8"
+                android:background="@drawable/ripple_effect"
+                android:buttonTint="@color/yellow"
+                android:gravity="center|start"
+                android:paddingHorizontal="@dimen/dp5"
+                android:text="@string/english"
+                android:textColor="@color/them_dark"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tvArabic" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

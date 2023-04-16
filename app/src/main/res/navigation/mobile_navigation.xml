@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.mas.cryptomasters.ui.fragment.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="com.mas.cryptomasters.ui.fragment.recommend.ReconciliationFragment"
+        android:label="@string/reccomended"
+        tools:layout="@layout/fragment_recommend" />
+
+    <fragment
+        android:id="@+id/navigation_order"
+        android:name="com.mas.cryptomasters.ui.fragment.rules.RuleFragment"
+        android:label="@string/crypto_rules"
+        tools:layout="@layout/fragment_rule" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.mas.cryptomasters.ui.fragment.coin.CoinFragment"
+        android:label="@string/chat"
+        tools:layout="@layout/fragment_coins" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.mas.cryptomasters.ui.fragment.settings.SettingsFragment"
+        android:label="@string/chat"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

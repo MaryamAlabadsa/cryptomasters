@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home"
+        app:cnb_backgroundColor="@color/them"
+        app:cnb_iconColor="@color/yellow"
+        app:cnb_textColor="@color/yellow" />
+
+    <item
+        android:id="@+id/navigation_reco"
+        android:icon="@drawable/ic_reco"
+        android:title="@string/reccomended"
+        app:cnb_backgroundColor="@color/them"
+        app:cnb_iconColor="@color/yellow"
+        app:cnb_textColor="@color/yellow" />
+
+    <item
+        android:id="@+id/navigation_coin"
+        android:icon="@drawable/ic_currency_bitcoin_circle_svgrepo_com"
+        android:title="@string/coins"
+        app:cnb_backgroundColor="@color/them"
+        app:cnb_iconColor="@color/yellow"
+        app:cnb_textColor="@color/yellow" />
+
+    <item
+        android:id="@+id/navigation_rules"
+        android:icon="@drawable/ic_quran"
+        android:title="@string/crypto_rules"
+        app:cnb_backgroundColor="@color/them"
+        app:cnb_iconColor="@color/yellow"
+        app:cnb_textColor="@color/yellow" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/settings"
+        app:cnb_backgroundColor="@color/them"
+        app:cnb_iconColor="@color/yellow"
+        app:cnb_textColor="@color/yellow" />
+
+</menu>

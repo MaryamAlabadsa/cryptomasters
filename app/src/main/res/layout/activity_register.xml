@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="true"
+    android:fillViewport="true"
+    android:paddingHorizontal="@dimen/dp25"
+    android:paddingVertical="@dimen/dp15"
+    tools:context=".ui.signup.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp120"
+            android:layout_marginTop="@dimen/dp25"
+            android:src="@drawable/app_logo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvW"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:gravity="center"
+            android:text="@string/happy_to"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:layout_marginTop="@dimen/dp10"
+            android:src="@drawable/ic_profile"
+            app:civ_circle_background_color="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvW" />
+
+        <ImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:src="@drawable/ic_upload_image"
+            app:layout_constraintBottom_toBottomOf="@id/ivProfile"
+            app:layout_constraintEnd_toEndOf="@id/ivProfile"
+            app:tint="@color/them" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_profile_form"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:lines="1"
+            android:paddingHorizontal="@dimen/dp15"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintTop_toBottomOf="@id/ivProfile" />
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/cpCode"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/left_number_shape"
+            android:gravity="center"
+            android:layoutDirection="ltr"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_defaultPhoneCode="970"
+            app:ccp_excludedCountries="IL"
+            app:ccp_showFullName="false"
+            app:ccp_showNameCode="false"
+            app:ccp_showPhoneCode="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            />
+
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtPhone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginStart="@dimen/dp8"
+            android:maxLength="18"
+            android:background="@drawable/right_number_shape"
+            android:drawableStart="@drawable/ic_call"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:layoutDirection="ltr"
+            android:lines="1"
+            android:paddingHorizontal="@dimen/dp8"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cpCode"
+            app:layout_constraintTop_toTopOf="@id/cpCode" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="@dimen/dp15"
+            app:layout_constraintTop_toBottomOf="@id/txtPhone" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="@dimen/dp15"
+            app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbTerms"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/ripple_effect"
+            android:padding="@dimen/dp8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtConfirmPassword" />
+
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/ripple_effect"
+            android:gravity="center|start"
+            android:padding="@dimen/dp8"
+            android:text="@string/agree_terms"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cbTerms"
+            app:layout_constraintTop_toBottomOf="@id/txtConfirmPassword" />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:backgroundTint="@color/them"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/cbTerms" />
+
+        <TextView
+            android:id="@+id/tvHaveAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:padding="@dimen/dp8"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/tvRegister" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

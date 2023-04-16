@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:padding="@dimen/dp5">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dp5"
+        android:background="@drawable/shape_edg_10">
+
+        <TextView
+            android:id="@+id/tvEdit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ripple_effect_g"
+            android:drawablePadding="@dimen/dp25"
+            android:gravity="center|start"
+            android:paddingHorizontal="@dimen/dp10"
+            android:text="@string/edit_post"
+            android:textColor="@color/them_dark"
+            android:textSize="@dimen/sp14"
+            app:drawableStartCompat="@drawable/ic_edit_post"
+            app:drawableTint="@color/them_dark"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp2"
+            android:background="@drawable/ripple_effect_g"
+            android:drawablePadding="@dimen/dp25"
+            android:gravity="center|start"
+            android:paddingHorizontal="@dimen/dp10"
+            android:text="@string/delete_post"
+            android:textColor="@color/them_dark"
+            android:textSize="@dimen/sp14"
+            app:drawableStartCompat="@drawable/ic_delete"
+            app:drawableTint="@color/them_dark"
+            app:layout_constraintTop_toBottomOf="@id/tvEdit"
+           />
+
+        <TextView
+            android:id="@+id/tvReport"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp2"
+            android:background="@drawable/ripple_effect_g"
+            android:drawablePadding="@dimen/dp25"
+            android:gravity="center|start"
+            android:paddingHorizontal="@dimen/dp10"
+            android:text="@string/report"
+            android:textColor="@color/them_dark"
+            android:textSize="@dimen/sp14"
+            app:drawableStartCompat="@drawable/ic_report"
+            app:drawableTint="@color/them_dark"
+            app:layout_constraintTop_toBottomOf="@id/tvDelete"
+            />
+        <TextView
+            android:id="@+id/tvBlock"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp2"
+            android:background="@drawable/ripple_effect_g"
+            android:drawablePadding="@dimen/dp25"
+            android:gravity="center|start"
+            android:paddingHorizontal="@dimen/dp10"
+            android:text="@string/blockUser"
+            android:textColor="@color/them_dark"
+            android:textSize="@dimen/sp14"
+            app:drawableStartCompat="@drawable/ic_report"
+            app:drawableTint="@color/them_dark"
+            app:layout_constraintTop_toBottomOf="@id/tvDelete"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

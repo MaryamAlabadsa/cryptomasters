@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/receivedMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp8">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivReceivedImage"
+            android:layout_gravity="bottom"
+            android:layout_width="@dimen/dp35"
+            android:layout_height="@dimen/dp35"
+            android:src="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/tvReceivedMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp8"
+            android:layout_weight="1"
+            android:gravity="center|start"
+            android:autoLink="phone|email|web"
+            android:background="@drawable/received_shape"
+            android:linksClickable="true"
+            android:minHeight="@dimen/dp48"
+            android:padding="@dimen/dp5"
+            android:paddingHorizontal="@dimen/dp5"
+            android:textColor="@color/them_dark"
+            android:textColorLink="@color/blue"
+            android:textSize="@dimen/sp16" />
+
+        <TextView
+            android:id="@+id/tvReceivedTime"
+            android:layout_width="wrap_content"
+            android:maxWidth="@dimen/dp45"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp2"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/sp10" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/SenderMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp8">
+
+        <TextView
+            android:id="@+id/tvSendTime"
+            android:maxWidth="@dimen/dp45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp2"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/sp10" />
+
+        <TextView
+            android:id="@+id/tvSenderMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:layout_marginHorizontal="@dimen/dp8"
+            android:layout_weight="1"
+            android:autoLink="phone|email|web"
+            android:background="@drawable/send_shape"
+            android:linksClickable="true"
+            android:minHeight="@dimen/dp48"
+            android:padding="@dimen/dp5"
+            android:paddingHorizontal="@dimen/dp5"
+            android:textColor="@color/black"
+            android:textColorLink="@color/blue"
+            android:textSize="@dimen/sp16" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivSenderImage"
+            android:layout_gravity="bottom"
+            android:layout_width="@dimen/dp35"
+            android:layout_height="@dimen/dp35"
+            android:src="@drawable/ic_profile" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "392165976878",
+    "firebase_url": "https://crptomaster-4bbd7-default-rtdb.firebaseio.com",
+    "project_id": "crptomaster-4bbd7",
+    "storage_bucket": "crptomaster-4bbd7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392165976878:android:8b50b6d54755b99fc228bf",
+        "android_client_info": {
+          "package_name": "com.mas.cryptomasters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392165976878-fh60qb907tiresfnjbmab090rufnqtmu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mas.cryptomasters",
+            "certificate_hash": "5d511a5a905d36f6a63cf22fc6da6640c4eb437f"
+          }
+        },
+        {
+          "client_id": "392165976878-rrkjecfcga49rulfkb28glvpuo2h4tqq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjF1Nhu4ww0V1frdDmIPRLHWalC13BIR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392165976878-rrkjecfcga49rulfkb28glvpuo2h4tqq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "392165976878-i10oivctu71clsgoqgj7d4ii7hopva6p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ios.com.crp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

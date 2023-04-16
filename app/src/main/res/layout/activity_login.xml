@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="true"
+    android:fillViewport="true"
+    android:paddingHorizontal="@dimen/dp25"
+    android:paddingVertical="@dimen/dp15"
+    tools:context=".ui.login.LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp120"
+            android:layout_marginTop="@dimen/dp25"
+            android:src="@drawable/app_logo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvW"
+            style="@style/boldFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:gravity="center"
+            android:text="@string/welcome_back"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/cpCode"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp25"
+            android:background="@drawable/left_number_shape"
+            android:gravity="center"
+            android:layoutDirection="ltr"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_defaultPhoneCode="970"
+            app:ccp_excludedCountries="IL"
+            app:ccp_showFullName="false"
+            app:ccp_showNameCode="false"
+            app:ccp_showPhoneCode="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvW" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtPhone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginStart="@dimen/dp8"
+            android:background="@drawable/right_number_shape"
+            android:drawableStart="@drawable/ic_call"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:layoutDirection="ltr"
+            android:lines="1"
+            android:maxLength="18"
+            android:paddingHorizontal="@dimen/dp8"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cpCode"
+            app:layout_constraintTop_toTopOf="@id/cpCode" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/input_shape"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="@dimen/dp8"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layoutDirection="ltr"
+            android:paddingHorizontal="@dimen/dp15"
+            app:layout_constraintTop_toBottomOf="@id/txtPhone" />
+
+        <TextView
+            android:id="@+id/tvForgetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/ripple_effect"
+            android:gravity="center|start"
+            android:padding="@dimen/dp8"
+            android:text="@string/forget_password"
+            android:textColor="@color/border"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp15"
+            android:backgroundTint="@color/them"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tvForgetPassword" />
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            app:layout_constraintTop_toBottomOf="@id/tvLogin"
+            android:background="@drawable/ripple_effect"
+            android:gravity="center"
+            android:padding="@dimen/dp8"
+            android:text="@string/pay_login"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp12"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSingUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:gravity="center"
+            android:padding="@dimen/dp8"
+            android:text="@string/not_member1"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/tvTerms" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crypto Masters</string>
+    <string name="welcome_text">مرحبًا بكم في أكبر تطبيق لتصفية أخبار العملات المشفرة</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="browse_now">تصفح الآن</string>
+    <string name="general_error">حدث خطأ ما , حاول مجدداُ</string>
+    <string name="user_blocked">تم حظر هذا المستخدم ، يرجى الاتصال بالدعم</string>
+    <string name="welcome_back">مرحبا مجدداً</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forget_password">نسيت كلمة المرور؟</string>
+    <string name="not_member1">تسجيل جديد!</string>
+    <string name="not_member2">تسجيل الآن</string>
+    <string name="password_validation">يجب ألا يقل طول كلمة المرور عن 8 أرقام</string>
+    <string name="check_data">المستخدم غير موجود ، أو كلمة المرور غير صحيحة</string>
+    <string name="happy_to">سعداء لانضمامك إلينا</string>
+    <string name="full_name">الاسم بالكامل</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="agree_terms">أوافق على الشروط وسياسة الخصوصية ></string>
+    <string name="have_account1">لديك حساب بالفعل ؟</string>
+    <string name="have_account2">تسجيل الدخول</string>
+    <string name="mismatches">عدم التطابق</string>
+    <string name="terms">قم بتأكيد الشروط وشروط الخصوصية ، من فضلك</string>
+    <string name="phone_is_used">رقم الهاتف مستخدما مسبقا!</string>
+    <string name="registration_successful">تم التسجيل بنجاح</string>
+    <string name="title_home">الرئيسية</string>
+    <string name="crypto_rules">احكام العملات</string>
+    <string name="settings">الإعدادات</string>
+    <string name="reccomended">التوصيات</string>
+    <string name="chat">الرسائل</string>
+    <string name="coins">نقاط</string>
+
+    <string name="what_think1">بماذا تفكر؟</string>
+    <string name="what_think2">إنشاء منشور</string>
+    <string name="open_profile">الملف الشخصي</string>
+    <string name="edit_profile_photo">تعديل الصورة</string>
+    <string name="your_posts">منشوراتك</string>
+    <string name="edit_profile">تعديل الحساب</string>
+    <string name="change_password">تغير كملة المرور</string>
+    <string name="edit_profile_message">يمكنك بسهولة تعديل بياناتك من هنا</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="confirm_now">تأكيد الآن</string>
+    <string name="welcome">مرحبا ,</string>
+    <string name="happy_to_contact_us">سعداء لتواصلك معنا</string>
+    <string name="message_title">"عنوان الرسالة "</string>
+    <string name="your_message">رسالتك</string>
+    <string name="send_now">إرسال</string>
+    <string name="contact_us">تواصل معنا</string>
+    <string name="send_success">تم إرسال رسالتك بنجاح</string>
+    <string name="privacy_amp_terms">الشروط والخصوصية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="old_password">كلمة المرور السابقة</string>
+    <string name="not_match">غير متطابق</string>
+    <string name="check_rest_data">كلمة المرور القديمة غير صحيحة أو هناك خطأ ما ، حاول مرة أخرى!</string>
+    <string name="permissions_required">الأذونات مطلوبة للمتابعة</string>
+    <string name="edit_post">تعديل</string>
+    <string name="hi">مرحبا,</string>
+    <string name="post_tittle">عنوان المنشور</string>
+    <string name="add_a_video">إضافة فيديو</string>
+    <string name="add_an_image">إضافة صورة</string>
+    <string name="post_success">تم إرسال بنجاح</string>
+    <string name="post_updated">تم التعديل بنجاح</string>
+    <string name="post_delete_success">تم الحذف بنجاح</string>
+    <string name="delete_post">حذف</string>
+    <string name="comment">تعليق</string>
+    <string name="more">المزيد..</string>
+    <string name="user_rate">تقيم المستخدمين</string>
+    <string name="recommended_crypto">التوصيات</string>
+    <string name="up">أعلى</string>
+    <string name="down">أدنى</string>
+    <string name="your_opinion">توصياتك</string>
+    <string name="user">المستخدم</string>
+    <string name="vote_success">تم إرسال تصويتك بنجاح</string>
+    <string name="hala">حلال</string>
+    <string name="all">الكل</string>
+    <string name="haram">حرام</string>
+    <string name="image_add">تم اضافة صورة</string>
+    <string name="video_add">تم اضافة فيديو</string>
+    <string name="write_comment">اضافة تعليق</string>
+    <string name="comment_set_success">تم ارسال تعليقك بنجاح</string>
+    <string name="delete">حذف</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="alert">تنبيه!</string>
+    <string name="alert_message">هل تريد المتابعه</string>
+    <string name="confirm">تأكيد</string>
+    <string name="dismiss">تجاهل</string>
+    <string name="arabic">العربية</string>
+    <string name="english">الإنجليزية</string>
+    <string name="language">اللغة</string>
+    <string name="loading_l">تحميل..</string>
+    <string name="save">حفظ</string>
+    <string name="update_profile">تم تحديث الملف الشخصي بنجاح</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="enter_phone">الرجاء إدخال رقم هاتفك للحصول على رمز التحقق</string>
+    <string name="enter_code">الرجاء إدخال الرمز المكون من 6 أرقام المرسل إلى : %s</string>
+    <string name="verify">التحقق</string>
+    <string name="wait_s_before_resend">الرجاء الإنتظار %s قبل إعادة الإرسال</string>
+    <string name="code_error">رمز التحقق خطأ او غير صالح</string>
+    <string name="resend_now">إعادة الإرسال</string>
+    <string name="reset_now_pass">أعد تعيين كلمة المرور الجديدة الآن</string>
+    <string name="reset_success">تمت إعادة تعيين كلمة المرور بنجاح</string>
+    <string name="login_first">الرجاء تسجيل الدخول للاتصال بخدمة العملاء</string>
+    <string name="gust_user">ضيف</string>
+    <string name="login_first_2">تحتاج إلى تسجيل الدخول للمتابعة</string>
+    <string name="or_contact_us_via">أو تواصل معنا عبر</string>
+    <string name="delete_ads_now">لحذف الإعلانات ، تواصل معنا عبر WhatsApp أو Telegram من فضلك</string>
+    <string name="delete_ads">حذف الإعلانات</string>
+    <string name="coin_project">مشروع العملة</string>
+    <string name="details">التفاصيل</string>
+    <string name="home_page_update">"تم تحديث الصفحة "</string>
+    <string name="select_images">أختر الصور</string>
+    <string name="pay_login">شروط الاستخدام و سياسة الخصوصية</string>
+    <string name="report">إبلاغ</string>
+    <string name="report_item">أبلغ عن الأخطاء أو المشكلات أو المحتوى</string>
+    <string name="user_was_block">تم حظر المستخدم</string>
+    <string name="blockUser">حظر المستخدم</string>
+    <string name="no_connection">لايوجد إتصال بالإنترنت!</string>
+
+    <string-array name="reports_list">
+        <item>العري </item>
+        <item> عنف </item>
+        <item> عنف </item>
+        <item>البريد العشوائي</item>
+        <item> خداع </item>
+        <item> الإرهاب </item>
+        <item> شيء آخر </item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,136 @@
+<resources>
+    <string name="app_name">Crypto Masters</string>
+    <string name="welcome_text">Welcome to the largest application for filtering cryptocurrency news</string>
+    <string name="login">Login</string>
+    <string name="browse_now">Browse Now</string>
+    <string name="general_error">Something wrong please try again!</string>
+    <string name="user_blocked">This user was Blocked, please contact support</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="phone_number">Phone number</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password ?</string>
+    <string name="not_member1">Not a member yet? </string>
+    <string name="not_member2">Sign up now</string>
+    <string name="password_validation">Password length should be at least 8 digits</string>
+    <string name="check_data">User is not exist , or password not correct</string>
+    <string name="happy_to">Happy to have you join us</string>
+    <string name="full_name">Full name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="agree_terms">I agree to the Terms &amp; Privacy Policy></string>
+    <string name="have_account1">already have an account ? </string>
+    <string name="have_account2">login now</string>
+    <string name="mismatches">Mismatches</string>
+    <string name="terms">Confirm the terms and privacy condition, please</string>
+    <string name="phone_is_used">Phone is already used!</string>
+    <string name="registration_successful">Registration successful</string>
+    <string name="title_home">Home</string>
+    <string name="crypto_rules">Crypto rules</string>
+    <string name="settings">Settings</string>
+    <string name="reccomended">Recommended</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="chat">Chat</string>
+    <string name="coins">Coins</string>
+    <string name="what_think1">What do you think about? </string>
+    <string name="what_think2">Create a post now</string>
+    <string name="open_profile">Open Profile</string>
+    <string name="edit_profile_photo">Edit Profile Photo</string>
+    <string name="your_posts">Your Posts</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="edit_profile_message">You can easily modify your data from here</string>
+    <string name="email">Email address</string>
+    <string name="confirm_now">Confirm Now</string>
+    <string name="welcome">Welcome,</string>
+    <string name="happy_to_contact_us">Happy to contact us</string>
+    <string name="message_title">Message Title</string>
+    <string name="your_message">Your Message</string>
+    <string name="send_now">Send Now</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="send_success">Your message sent successfully</string>
+    <string name="privacy_amp_terms">Privacy &amp; Terms</string>
+    <string name="new_password">New Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="not_match">Not matched</string>
+    <string name="check_rest_data">Old password not correct or something wrong , try again!</string>
+    <string name="permissions_required">Permissions required to continue</string>
+    <string name="edit_post">Edit</string>
+    <string name="hi">Hi,</string>
+    <string name="post_tittle">Post Tittle</string>
+    <string name="add_a_video">Add A Video</string>
+    <string name="add_an_image">Add An Image</string>
+    <string name="post_success">Post send successful</string>
+    <string name="post_updated">Post updated successful</string>
+    <string name="post_delete_success">Deleted successful</string>
+    <string name="delete_post">Delete</string>
+    <string name="comment">Comment</string>
+    <string name="more">More..</string>
+    <string name="user_rate">User Rate</string>
+    <string name="recommended_crypto">Recommended Crypto</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+    <string name="your_opinion">Your Opinion is Recommended</string>
+    <string name="user">USER</string>
+    <string name="vote_success">Your vote sent successfully</string>
+    <string name="hala">Hala</string>
+    <string name="all">All</string>
+    <string name="haram">Haram</string>
+    <string name="image_add">Image added successfully</string>
+    <string name="video_add">Video added successfully</string>
+    <string name="write_comment">Write Comment</string>
+    <string name="comment_set_success">Comment was sent successfully</string>
+    <string name="delete">Delete</string>
+    <string name="log_out">Log Out</string>
+    <string name="alert">Alert!</string>
+    <string name="alert_message">Do you want to continue?</string>
+    <string name="confirm">Confirm</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+    <string name="language">Language</string>
+    <string name="loading_l">Loading..</string>
+    <string name="save">Save</string>
+    <string name="update_profile">Profile updated successfully</string>
+    <string name="notifications">Notifications</string>
+    <string name="enter_phone">Please Enter Your Phone To Receive The Verification Code</string>
+    <string name="enter_code">Please Enter The 6 Digit Code Sent To: %s</string>
+    <string name="verify">Verify</string>
+    <string name="wait_s_before_resend">Wait %s before resend</string>
+    <string name="code_error">The code is wrong or expired!</string>
+    <string name="resend_now">Resend Now</string>
+    <string name="reset_now_pass">Reset a new password now</string>
+    <string name="reset_success">Password reset successful</string>
+    <string name="login_first">Please login to contact customer service</string>
+    <string name="gust_user">Guest</string>
+    <string name="login_first_2">You need to login to continue</string>
+    <string name="default_notification_channel_id" translatable="false">com.mas.cryptomasters</string>
+    <string name="or_contact_us_via">Or contact us via</string>
+    <string name="delete_ads_now">To Delete Ads , contact us through WhatsApp or Telegram , Please</string>
+    <string name="delete_ads">Delete Ads</string>
+    <string name="coin_project">Coin Project</string>
+    <string name="details">Details</string>
+    <string name="pay_login">Terms of use and privacy policy</string>
+    <string name="select_images">Select Picture</string>
+    <string name="home_page_update">Page was updated</string>
+    <string name="report">Report</string>
+    <string name="report_item">Report bugs , issues or content</string>
+    <string name="blockUser">Block User</string>
+    <string name="user_was_block">User was Blocked</string>
+    <string name="no_connection">No internet connection!</string>
+    <string name="block_list">Block list</string>
+    <string name="un_block">Unblock</string>
+    <string name="no_items">No items!</string>
+    <string name="un_block_success">Unblock successfully</string>
+    <string name="recommended_crypto_text"><![CDATA[تمتع بخدماتنا واختصر الطريق الى الثراء  يعمل فريقنا لأجلك على مدار الساعة  أكثر من ثلاثون توصية يومياً تداول العملات وانت مطمئن كل ماعليك هو الاشتراك معنا في خدمة توصيات vip  عروضنا مستمرة دائماً اشتراك التوصيات عليك وازالة الاعلانات علينا.]]></string>
+    <string name="Subscription_plans">خطط الاشتراكات</string>
+    <string name="recommended_crypto_title">"مرحبا بكم في تطبيقنا  "</string>
+
+    <string-array name="reports_list">
+        <item>Nudity</item>
+        <item>Violence</item>
+        <item>Harassment</item>
+        <item>Spam</item>
+        <item>Hate Speech</item>
+        <item>Terrorism</item>
+        <item>Something else</item>
+    </string-array>
+</resources>
