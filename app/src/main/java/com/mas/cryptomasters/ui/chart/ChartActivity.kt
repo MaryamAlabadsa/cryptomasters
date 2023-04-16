@@ -2,7 +2,7 @@ package com.mas.cryptomasters.ui.chart
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.github.mikephil.charting.charts.LineChart
+//import com.github.mikephil.charting.charts.LineChart
 import com.mas.cryptomasters.R
 
 class ChartActivity : AppCompatActivity() {

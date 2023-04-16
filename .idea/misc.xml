@@ -3,18 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/BottomSheetDialog.xml" value="0.25" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/activity_chart.xml" value="0.1936725096194955" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.20521590423257802" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/coin.xml" value="0.25" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/fragment_coins.xml" value="0.18565400843881857" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/fragment_recommend.xml" value="0.1936725096194955" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/loading_layout.xml" value="0.25" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/plan_item.xml" value="0.20521590423257802" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/posts_items.xml" value="0.20521590423257802" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/subscribe_dialog.xml" value="0.25" />
-        <entry key="..\:/sannad/Crypto Masters app 2/Crypto Masters app/app/src/main/res/layout/subscription_item.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_chart.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/coin.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
