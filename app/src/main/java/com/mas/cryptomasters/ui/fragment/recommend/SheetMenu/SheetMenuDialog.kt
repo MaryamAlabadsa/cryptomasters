@@ -1,5 +1,7 @@
 package com.mas.cryptomasters.ui.fragment.recommend.SheetMenu
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +43,18 @@ class SheetMenuDialog(private val menuViewModel: MenuViewModel) : BottomSheetDia
             adapter = planAdapter
         }
 
+        binding.whatup.setOnClickListener {
+            val whatsappIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://api.whatsapp.com/send?phone=${preferences.getAppSettings().whts}")
+            )
+            startActivity(whatsappIntent)
+        }
+        binding.tel.setOnClickListener {
+            val telegramIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain={${preferences.getAppSettings().tg}}"))
+            startActivity(telegramIntent)
+        }
         // Observe changes to menu items
         menuViewModel.menuMutable.observe(viewLifecycleOwner) { response ->
             when {

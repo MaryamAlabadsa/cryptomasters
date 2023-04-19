@@ -26,6 +26,9 @@ class PreferenceHelper @Inject constructor(@ApplicationContext context: Context)
     private val guestUser = "GUEST"
     private val fcmToken = "FCM_TOKEN"
     private val adsCount = "ADS_COUNT"
+    private val marketId = "marketId"
+    private val high_24h = "high_24h"
+    private val low_24h = "low_24h"
 
 
     override fun setUserProfile(userProfile: ProfileObject) {
@@ -79,8 +82,20 @@ class PreferenceHelper @Inject constructor(@ApplicationContext context: Context)
         preferences.edit()?.putString(fcmToken, token)?.apply()
 
     }
+
     override fun getFCMToken():String = preferences.getString(fcmToken, "NNNNNN").toString()
 
+    fun getMarketId():String = preferences.getString(marketId, "bitcoin").toString()
+    fun gethigh_24h():String = preferences.getFloat(high_24h, 0f).toString()
+    fun getlow_24h():String = preferences.getFloat(low_24h, 0f).toString()
+
+    fun setMarketId(marketId: String, high: Double?, low: Double?) {
+        val editor = preferences.edit()
+        editor.putString("marketId", marketId)
+        editor.putFloat("high_24h", high?.toFloat() ?: 0f)
+        editor.putFloat("low_24h", low?.toFloat() ?: 0f)
+        editor.apply()
+    }
 
     override fun incrementAdsCount(reset: Boolean) {
         if (reset) {

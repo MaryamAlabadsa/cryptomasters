@@ -32,6 +32,7 @@ import com.mas.cryptomasters.utils.Navigate
 import com.mas.cryptomasters.utils.ToastType
 import es.dmoral.toasty.Toasty
 import java.lang.NullPointerException
+import java.util.logging.Logger
 
 
 class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate){
@@ -46,8 +47,9 @@ class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
     override fun setView(phoneIsConnected: Boolean) {
         preferences = PreferenceHelper(this)
-        init()
         setInternalAds()
+        init()
+
 
     }
 
@@ -145,13 +147,19 @@ class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     }
 
     private fun setInternalAds() {
+        val Log = Logger.getLogger(ChatActivity::class.java.name)
+        Log.warning("Hello World")
         InterstitialAd.load(this, Constants.INTERNAL_ADS, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     mInterstitialAd = null
+                    Log.warning("Hello World1212")
+
                 }
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     mInterstitialAd = interstitialAd
+                    Log.warning("Hello World6666666")
+
                 }
             })
 

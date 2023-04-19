@@ -55,6 +55,7 @@
     <string name="permissions_required">Permissions required to continue</string>
     <string name="edit_post">Edit</string>
     <string name="hi">Hi,</string>
+    <string name="no_data">No Data</string>
     <string name="post_tittle">Post Tittle</string>
     <string name="add_a_video">Add A Video</string>
     <string name="add_an_image">Add An Image</string>
@@ -123,6 +124,13 @@
     <string name="recommended_crypto_text"><![CDATA[تمتع بخدماتنا واختصر الطريق الى الثراء  يعمل فريقنا لأجلك على مدار الساعة  أكثر من ثلاثون توصية يومياً تداول العملات وانت مطمئن كل ماعليك هو الاشتراك معنا في خدمة توصيات vip  عروضنا مستمرة دائماً اشتراك التوصيات عليك وازالة الاعلانات علينا.]]></string>
     <string name="Subscription_plans">خطط الاشتراكات</string>
     <string name="recommended_crypto_title">"مرحبا بكم في تطبيقنا  "</string>
+    <string name="day">day</string>
+    <string name="week">week</string>
+    <string name="month">month</string>
+    <string name="three_month">3 month</string>
+    <string name="year">year</string>
+    <string name="five_year">5 year</string>
+    <string name="day_range">Range of day</string>
 
     <string-array name="reports_list">
         <item>Nudity</item>

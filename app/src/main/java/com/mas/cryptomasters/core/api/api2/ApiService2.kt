@@ -1,5 +1,6 @@
 package com.mas.cryptomasters.core.api.api2
 
+import com.mas.cryptomasters.data.models.ChartResponse
 import com.mas.cryptomasters.data.models.coin.Coins
 import com.mas.cryptomasters.data.request.*
 import com.mas.cryptomasters.data.response.*
@@ -19,7 +20,15 @@ interface ApiService2 {
         @Query("vs_currency") currency: String = "usd",
         @Query("order") order: String = "market_cap_desc",
         @Query("per_page") perPage: Int = 30,
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int =1,
         @Query("sparkline") sparkline: Boolean = false
     ): Response<List<Coins>>
+
+    @GET("coins/{id}/market_chart")
+    suspend fun getMarketChart(
+        @Path("id") coinId: String = "bitcoin",
+        @Query("vs_currency") currency: String = "usd",
+        @Query("days") days: Int = 1
+    ): Response<ChartResponse>
+
 }

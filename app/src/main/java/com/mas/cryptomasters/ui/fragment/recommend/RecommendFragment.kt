@@ -18,7 +18,6 @@ import com.mas.cryptomasters.databinding.FragmentRecommendBinding
 import com.mas.cryptomasters.databinding.FragmentRecommendDetailsBinding
 import com.mas.cryptomasters.ui.fragment.recommend.SheetMenu.MenuViewModel
 import com.mas.cryptomasters.ui.fragment.recommend.SheetMenu.SheetMenuDialog
-import com.mas.cryptomasters.ui.fragment.recommend.SheetMenu.SheetMenuViewModel
 import com.mas.cryptomasters.ui.othersActivity.NavigationActivity
 import com.mas.cryptomasters.utils.Constants
 import com.mas.cryptomasters.utils.Extensions.crToast

@@ -54,14 +54,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/whatup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp15"
             app:srcCompat="@drawable/ic_whatsapp" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp15"

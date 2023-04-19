@@ -3,7 +3,12 @@ package com.mas.cryptomasters.ui.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.mas.BaseActivity
+import com.mas.cryptomasters.ChatActivity
 import com.mas.cryptomasters.R
 import com.mas.cryptomasters.data.models.NotificationsModels
 import com.mas.cryptomasters.databinding.ActivityMainBinding
@@ -13,14 +18,18 @@ import com.mas.cryptomasters.ui.fragment.recommend.RecommendFragment
 import com.mas.cryptomasters.ui.fragment.rules.RuleFragment
 import com.mas.cryptomasters.ui.fragment.settings.SettingsFragment
 import com.mas.cryptomasters.ui.othersActivity.NavigationActivity
+import com.mas.cryptomasters.utils.Constants
 import com.mas.cryptomasters.utils.Extensions.crToast
 import com.mas.cryptomasters.utils.Navigate
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.logging.Logger
 
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private val postActions = listOf("like", "comment")
+    private var mInterstitialAd: InterstitialAd? = null
+    private val adRequest: AdRequest = AdRequest.Builder().build()
 
 
     override fun setView(phoneIsConnected: Boolean) {
@@ -28,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             crToast(getString(R.string.no_connection))
             return
         }
-
+        setInternalAds()
 
 
         //select home by default
@@ -83,5 +92,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .commit()
     }
 
+    private fun setInternalAds() {
+        val Log = Logger.getLogger(ChatActivity::class.java.name)
+        Log.warning("Hello World")
+        InterstitialAd.load(this, Constants.INTERNAL_ADS, adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    mInterstitialAd = null
+                    Log.warning("Hello World1212")
+
+                }
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    mInterstitialAd = interstitialAd
+                    Log.warning("Hello World6666666")
+
+                }
+            })
+
+    }
 
 }

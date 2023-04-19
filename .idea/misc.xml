@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_chart.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/selected_button_bg.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/selected_button_text_color.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/text_color_selector.xml" value="0.2375" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/unselected_button_bg.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_chart.xml" value="0.536" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_player.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.1936725096194955" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/coin.xml" value="0.22826086956521738" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_coins.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_recommend.xml" value="0.1936725096194955" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/loading_layout.xml" value="0.1" />
       </map>
     </option>
   </component>
