@@ -44,16 +44,16 @@ class CoinFragment : BaseFragment<FragmentCoinsBinding>() {
         viewModel.initPagination()
 
         // Set up scroll listener to fetch next page of items
-        binding.rvList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-                if (lastVisibleItemPosition == coinsAdapter.itemCount - 1) {
-                    viewModel.fetchNextPage()
-                }
-            }
-        })
+//        binding.rvList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+//                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+//                if (lastVisibleItemPosition == coinsAdapter.itemCount - 1) {
+//                    viewModel.fetchNextPage()
+//                }
+//            }
+//        })
     }
 
 }

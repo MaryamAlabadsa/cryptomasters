@@ -79,12 +79,12 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
             // update button appearance based on the selected index
             buttons.forEachIndexed { buttonIndex, button ->
                 if (buttonIndex == index) {
-                   handleLoading(binding.loading,false,"new")
+                    handleLoading(binding.loading,false,"new")
                     button.setBackgroundResource(R.drawable.selected_button_bg)
-                    button.setTextColor(R.color.white)
+                    button.setTextColor(getColor(R.color.white))
                 } else {
                     button.setBackgroundResource(R.drawable.unselected_button_bg)
-                    button.setTextColor(R.color.them)
+                    button.setTextColor(getColor(R.color.them))
                 }
             }
         }

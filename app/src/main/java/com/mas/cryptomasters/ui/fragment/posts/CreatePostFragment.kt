@@ -4,13 +4,21 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.mas.cryptomasters.BaseFragment
+import com.mas.cryptomasters.ChatActivity
 import com.mas.cryptomasters.R
 import com.mas.cryptomasters.adapters.ImageListAdapter
 import com.mas.cryptomasters.data.request.CreatePostRequest
@@ -27,11 +35,13 @@ import com.mas.cryptomasters.utils.Extensions.reLogin
 import com.mas.cryptomasters.utils.Extensions.setInputErrorHint
 import com.mas.cryptomasters.utils.Extensions.showProgress
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty.warning
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import java.util.logging.Logger
 
 @AndroidEntryPoint
 class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
@@ -48,9 +58,24 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
     private var imageBase64List = ArrayList<String>()
     private lateinit var imageListAdapter: ImageListAdapter
 
+    private var mInterstitialAd: InterstitialAd? = null
+    private val adRequest: AdRequest = AdRequest.Builder().build()
+
     private val postRequest = CreatePostRequest()
 
     override fun init() {
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(requireActivity())
+            mInterstitialAd?.fullScreenContentCallback =
+                object : FullScreenContentCallback() {
+                    override fun onAdDismissedFullScreenContent() {
+//                        intentToRule()
+                    }
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+//                        intentToRule()
+                    }
+                }
+        }
         initImagesAdapter()
 
         binding.tvAddImage.setOnClickListener {
@@ -244,5 +269,28 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
         val description = descriptionString.toRequestBody(MultipartBody.FORM)
         viewModel.uploadVideo(description, body)
 
+    }
+    private fun setInternalAds() {
+        val Log = Logger.getLogger(ChatActivity::class.java.name)
+        Log.warning("Hello World")
+        InterstitialAd.load(context, Constants.INTERNAL_ADS, adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    mInterstitialAd = null
+                    Log.warning("Hello World1212")
+
+                }
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    mInterstitialAd = interstitialAd
+                    Log.warning("Hello World6666666")
+
+                }
+            })
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setInternalAds()
     }
 }

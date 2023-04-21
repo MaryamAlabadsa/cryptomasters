@@ -37,7 +37,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             crToast(getString(R.string.no_connection))
             return
         }
-        setInternalAds()
 
 
         //select home by default

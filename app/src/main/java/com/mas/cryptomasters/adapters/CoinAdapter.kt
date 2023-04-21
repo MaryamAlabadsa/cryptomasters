@@ -56,21 +56,26 @@ class CoinAdapter(val preferenceHelper: PreferenceHelper, val activity: Activity
             var high_24h = it.high_24h
             var low_24h = it.low_24h
             binding.name.text = name
-            binding.coinPrice.text = it.current_price.toString()
+            binding.coinPrice.text = it.current_price.toString()+"USD"
 
-            val rounded1 = it.price_change_percentage_24h?.roundToLong()
-            val output = (rounded1?.toDouble() ?: 0.0) / 100.0
+//            val rounded1 = it.price_change_percentage_24h?.roundToLong()
+//            val output = (rounded1?.toDouble() ?: 0.0) / 100.0
+//            val num = -3.04869
+//            val arabicNum = it.price_change_percentage_24h
+//            if (arabicNum.cot)
+//            val num = arabicNum.replace("٫", ".").toDouble()
+            val output = parseNumber(it.price_change_percentage_24h.toString())
 
-            binding.currency.text = output.toString()
+            val roundedOutput = "%.2f".format(output)
+
+            binding.currency.text = "$roundedOutput%"
 //            binding.image.loadWebImage(it.image, false)
             Glide.with(context)
                 .load(it.image)
-//                .override(this.width, this.height)
                 .placeholder( R.drawable.ic_image_fream)
                 .into(binding.image)
 //            Toast.makeText(context, data.size.toString(), Toast.LENGTH_LONG).show()
             val Log = Logger.getLogger(ChartResponse::class.java.name)
-            Log.warning("${data.size} kkkkkkkkkkkkkkkkkk")
             binding.root.setOnClickListener {
                 val intent = Intent(context, ChartActivity::class.java)
                 intent.putExtra(name, "marketId")
@@ -81,5 +86,15 @@ class CoinAdapter(val preferenceHelper: PreferenceHelper, val activity: Activity
 
         }
 
+    }
+    fun parseNumber(input: String): Double {
+        val arabicRegex = "[-٠١٢٣٤٥٦٧٨٩]+(٫\\d+)?".toRegex()
+        val englishRegex = "[-0-9]+(\\.\\d+)?".toRegex()
+
+        return when {
+            arabicRegex.matches(input) -> input.replace("٫", ".").toDouble()
+            englishRegex.matches(input) -> input.toDouble()
+            else -> throw IllegalArgumentException("Invalid number format: $input")
+        }
     }
 }

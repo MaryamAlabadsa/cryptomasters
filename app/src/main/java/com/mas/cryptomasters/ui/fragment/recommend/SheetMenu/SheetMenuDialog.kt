@@ -51,8 +51,10 @@ class SheetMenuDialog(private val menuViewModel: MenuViewModel) : BottomSheetDia
             startActivity(whatsappIntent)
         }
         binding.tel.setOnClickListener {
+         val base="http://telegram.me/"
+            val tel=preferences.getAppSettings().tg
             val telegramIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain={${preferences.getAppSettings().tg}}"))
+                Intent(Intent.ACTION_VIEW, Uri.parse(base+tel))
             startActivity(telegramIntent)
         }
         // Observe changes to menu items

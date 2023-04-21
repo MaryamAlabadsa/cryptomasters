@@ -22,7 +22,7 @@ class CoinViewModel @Inject constructor(val apiRepository: ApiRepository2) : Vie
     private var currentPage = 1
 
     fun initPagination() {
-        currentPage = 1
+//        currentPage = 1
         getCoins(currentPage)
     }
 
@@ -38,10 +38,10 @@ class CoinViewModel @Inject constructor(val apiRepository: ApiRepository2) : Vie
         }
     }
 
-    fun fetchNextPage() {
-        currentPage++
-        getCoins(currentPage)
-    }
+//    fun fetchNextPage() {
+//        currentPage++
+//        getCoins(currentPage)
+//    }
 
 }
 //

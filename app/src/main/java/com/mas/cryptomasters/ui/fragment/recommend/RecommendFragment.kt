@@ -3,6 +3,7 @@ package com.mas.cryptomasters.ui.fragment.recommend
 import android.content.Intent
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,15 +33,30 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
     private val viewModel: RecommendViewModel by viewModels()
     private lateinit var recommendAdapter: RecommendAdapter
 
-    private var mInterstitialAd: InterstitialAd? = null
-    private val adRequest: AdRequest = AdRequest.Builder().build()
+//    private var mInterstitialAd: InterstitialAd? = null
+//    private val adRequest: AdRequest = AdRequest.Builder().build()
 
     override fun getViewBinding() = FragmentRecommendBinding.inflate(layoutInflater)
     private val menuViewModel: MenuViewModel by viewModels()
     private lateinit var sheetMenuDialog: SheetMenuDialog
 
     override fun init() {
-        if (preferences.isGustUser()) {
+
+        if (!preferences.getUserProfile().isPaid.equals("1")) {
+//            if (mInterstitialAd != null) {
+//                mInterstitialAd?.show(requireActivity())
+//                mInterstitialAd?.fullScreenContentCallback =
+//                    object : FullScreenContentCallback() {
+//                        override fun onAdDismissedFullScreenContent() {
+//                            Toast.makeText(context, "kkkk", Toast.LENGTH_SHORT).show()
+//
+////                            intentToRule()
+//                        }
+//                        override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+//                            Toast.makeText(context, "jj", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
+//            }
             handleLoading(binding.loading, false)
 
             binding.rvList.visibility = View.GONE
@@ -82,21 +98,21 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
 
             recommendAdapter.showAdsObservable.observe(this) {
                 if (preferences.getUserProfile().isPaid != "1") {
-                    if (mInterstitialAd != null) {
-                        mInterstitialAd?.show(requireActivity())
-                        mInterstitialAd?.fullScreenContentCallback =
-                            object : FullScreenContentCallback() {
-                                override fun onAdDismissedFullScreenContent() {
-                                    intentToRecommendData()
-                                }
-
-                                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                                    intentToRecommendData()
-                                }
-                            }
-                    } else {
+//                    if (mInterstitialAd != null) {
+//                        mInterstitialAd?.show(requireActivity())
+//                        mInterstitialAd?.fullScreenContentCallback =
+//                            object : FullScreenContentCallback() {
+//                                override fun onAdDismissedFullScreenContent() {
+//                                    intentToRecommendData()
+//                                }
+//
+//                                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+//                                    intentToRecommendData()
+//                                }
+//                            }
+//                    } else {
                         intentToRecommendData()
-                    }
+//                    }
 
                 } else {
                     intentToRecommendData()
@@ -119,19 +135,21 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
 
     }
 
-    private fun setInternalAds() {
-        InterstitialAd.load(requireContext(), Constants.INTERNAL_ADS, adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    mInterstitialAd = null
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    mInterstitialAd = interstitialAd
-                }
-            })
-
-    }
+//    private fun setInternalAds() {
+//        Toast.makeText(context, "jj", Toast.LENGTH_SHORT).show()
+//
+//        InterstitialAd.load(requireContext(), Constants.INTERNAL_ADS, adRequest,
+//            object : InterstitialAdLoadCallback() {
+//                override fun onAdFailedToLoad(adError: LoadAdError) {
+//                    mInterstitialAd = null
+//                }
+//
+//                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+//                    mInterstitialAd = interstitialAd
+//                }
+//            })
+//
+//    }
 
     private fun handleResponse(recommendations: Recommendations) {
         recommendAdapter.updateAdapter(recommendations.recommendData)
@@ -139,7 +157,7 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
 
     override fun onResume() {
         super.onResume()
-        setInternalAds()
+//        setInternalAds()
 
         if (preferences.getSomeUpdate().isThereRecommendUpdate != null) {
             binding.loading.clLoading.visibility = View.VISIBLE
