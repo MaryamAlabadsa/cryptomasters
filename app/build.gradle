@@ -16,8 +16,8 @@ android {
         applicationId "com.mas.cryptomasters"
         minSdk 23
         targetSdk 32
-        versionCode 7
-        versionName "1.7.1"
+        versionCode 11
+        versionName "1.7.5"
         buildConfigField 'String', 'BASE_URL', "\"https://msscrypto.com/api/v1/\""
         buildConfigField 'String', 'WEB_URL', "\"https://msscrypto.com/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

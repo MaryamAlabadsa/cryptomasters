@@ -86,7 +86,6 @@
             android:layoutDirection="ltr"
             android:paddingHorizontal="@dimen/dp15"
             app:layout_constraintTop_toBottomOf="@id/txtPhone" />
-
         <TextView
             android:id="@+id/tvForgetPassword"
             android:layout_width="match_parent"
@@ -98,6 +97,7 @@
             android:text="@string/forget_password"
             android:textColor="@color/border"
             android:textSize="@dimen/sp14"
+
             app:layout_constraintTop_toBottomOf="@id/txtPassword" />
 
         <TextView

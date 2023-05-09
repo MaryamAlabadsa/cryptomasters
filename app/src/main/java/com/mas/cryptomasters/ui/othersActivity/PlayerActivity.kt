@@ -55,9 +55,9 @@ class PlayerActivity : BaseActivity<ActivityPlayerBinding>(ActivityPlayerBinding
             finish()
         }
 
-        if (preferenceHelper.getUserProfile().isPaid != "1") {
-            setAds(binding.viewForAds)
-        }
+//        if (preferenceHelper.getUserProfile().isPaid != "1") {
+//            setAds(binding.viewForAds)
+//        }
 
     }
 

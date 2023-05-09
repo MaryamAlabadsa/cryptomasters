@@ -76,6 +76,21 @@ class CoinsAdapter : RecyclerView.Adapter<CoinsAdapter.MyViewHolder>() {
         }
 
     }
+    fun clearAdapter(){
+        this.data.clear()
+        notifyDataSetChanged()
+    }
+    fun updateAdapter(coinList: ArrayList<Coin>, searchQuery: String? = null) {
+        this.data = coinList.toMutableList() as ArrayList<Coin>
+
+        if (searchQuery != null) {
+            val filteredList = coinList.filter { it.name.contains(searchQuery, ignoreCase = true) }
+            this.data = filteredList.toMutableList() as ArrayList<Coin>
+        }
+
+        notifyDataSetChanged()
+    }
+
 }
 
 

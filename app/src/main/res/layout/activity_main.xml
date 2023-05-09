@@ -31,9 +31,9 @@
             android:id="@+id/viewForAds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_above="@id/bottom_menu"
-            android:visibility="gone" />
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
 
         <com.ismaeldivita.chipnavigation.ChipNavigationBar
             android:id="@+id/bottom_menu"

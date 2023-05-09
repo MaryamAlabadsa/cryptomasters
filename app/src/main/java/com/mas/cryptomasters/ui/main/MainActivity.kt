@@ -2,8 +2,12 @@ package com.mas.cryptomasters.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -22,6 +26,8 @@ import com.mas.cryptomasters.utils.Constants
 import com.mas.cryptomasters.utils.Extensions.crToast
 import com.mas.cryptomasters.utils.Navigate
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty.warning
+import java.util.*
 import java.util.logging.Logger
 
 
@@ -30,10 +36,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private val postActions = listOf("like", "comment")
     private var mInterstitialAd: InterstitialAd? = null
     private val adRequest: AdRequest = AdRequest.Builder().build()
+    val Log = Logger.getLogger(ChatActivity::class.java.name)
 
 
     override fun setView(phoneIsConnected: Boolean) {
-        if (!phoneIsConnected){
+        if (!phoneIsConnected) {
             crToast(getString(R.string.no_connection))
             return
         }
@@ -54,13 +61,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         handleIfHaveNotifications()
 
         if (preferenceHelper.getUserProfile().isPaid != "1") {
-            setAds(binding.viewForAds)
+//            setAds(binding.viewForAds)
         }
     }
 
 
     private fun handleIfHaveNotifications() {
-        if (intent.hasExtra(Navigate.HAS_NOTIFICATION) && intent.getParcelableExtra<NotificationsModels>(Navigate.HAS_NOTIFICATION) != null) {
+        if (intent.hasExtra(Navigate.HAS_NOTIFICATION) && intent.getParcelableExtra<NotificationsModels>(
+                Navigate.HAS_NOTIFICATION
+            ) != null
+        ) {
             val notify = intent.getParcelableExtra<NotificationsModels>(Navigate.HAS_NOTIFICATION)
             val bundle = Bundle()
             intent = Intent(applicationContext, NavigationActivity::class.java)
@@ -91,23 +101,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .commit()
     }
 
-    private fun setInternalAds() {
-        val Log = Logger.getLogger(ChatActivity::class.java.name)
-        Log.warning("Hello World")
-        InterstitialAd.load(this, Constants.INTERNAL_ADS, adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    mInterstitialAd = null
-                    Log.warning("Hello World1212")
+    override fun onBackPressed() {
+        val homeFragment = HomeFragment()
 
-                }
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    mInterstitialAd = interstitialAd
-                    Log.warning("Hello World6666666")
-
-                }
-            })
-
+        // check if the current fragment is not the home fragment
+        if (supportFragmentManager.findFragmentById(R.id.hostContainer) !is HomeFragment) {
+            binding.bottomMenu.setItemSelected(R.id.navigation_home, true)
+            setHomeFragment(homeFragment) // navigate to the home fragment
+        } else {
+            super.onBackPressed() // exit the app or finish the activity
+        }
     }
-
 }

@@ -35,9 +35,9 @@ import java.lang.NullPointerException
 import java.util.logging.Logger
 
 
-class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate){
+class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
-     private lateinit var chatAdapter: ChatAdapter
+    private lateinit var chatAdapter: ChatAdapter
     private var mInterstitialAd: InterstitialAd? = null
     private val adRequest: AdRequest = AdRequest.Builder().build()
     val db = FirebaseFirestore.getInstance()
@@ -53,9 +53,7 @@ class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
     }
 
-    private fun init(){
-
-
+    private fun init() {
         chatAdapter = ChatAdapter(preferences)
         binding.rvList.layoutManager = LinearLayoutManager(this)
         binding.rvList.adapter = chatAdapter
@@ -65,64 +63,28 @@ class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             binding.loading.clLoading.visibility = View.GONE
             binding.rvList.visibility = View.GONE
             binding.clNotUser.visibility = View.VISIBLE
-        }
-        else {
-            db.collection("chat")
-                .orderBy("timestamp", Query.Direction.ASCENDING)
-                .addSnapshotListener { value, error ->
-                    if (error != null) {
-                        handleLoading(binding.loading, true)
-                        return@addSnapshotListener
+        } else {
+            // load interstitial ad first
+            InterstitialAd.load(this, Constants.INTERNAL_ADS, adRequest,
+                object : InterstitialAdLoadCallback() {
+                    override fun onAdFailedToLoad(adError: LoadAdError) {
+                        // if ad failed to load, load data and show it immediately
+                        loadChatData()
                     }
-                    chatList.clear()
-                    for (doc in value!!) {
-                        val chat = doc.toObject(ChatModels::class.java)
-                        chatList.add(chat)
-                    }
-                    try {
-                        if (chatList.size > 0) {
-                            chatAdapter.updateChats(chatList).apply {
-                                binding.rvList.scrollToPosition(chatList.size - 1)
-                            }
 
-                        }
-                        handleLoading(binding.loading, false)
-                    } catch (e: NullPointerException) {
+                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                        // if ad loaded successfully, show it before loading data
+                        mInterstitialAd = interstitialAd
+                        mInterstitialAd?.fullScreenContentCallback =
+                            object : FullScreenContentCallback() {
+                                override fun onAdDismissedFullScreenContent() {
+                                    loadChatData()
+                                }
+                            }
+                        mInterstitialAd?.show(this@ChatActivity)
                     }
                 }
-
-            binding.ivSend.setOnClickListener {
-                val message = binding.txtMessage.text.toString()
-                if (message.isNotEmpty()) {
-                    if (preferences.getUserProfile().isPaid != "1") {
-                        if (preferences.getAdsCount() >= Constants.ADS_COUNT) {
-                            if (mInterstitialAd != null) {
-                                mInterstitialAd?.show(this)
-                                mInterstitialAd?.fullScreenContentCallback =
-                                    object : FullScreenContentCallback() {
-                                        override fun onAdDismissedFullScreenContent() {
-                                            preferences.incrementAdsCount(true)
-                                            setInternalAds()
-                                            sendMessage(message)
-                                        }
-
-                                        override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                                            sendMessage(message)
-                                        }
-                                    }
-                            } else {
-                                sendMessage(message)
-                            }
-                        } else {
-                            preferences.incrementAdsCount(false)
-                            sendMessage(message)
-                        }
-                    } else {
-                        sendMessage(message)
-                    }
-                }
-            }
-
+            )
         }
 
         binding.ivNotifications.setOnClickListener {
@@ -131,6 +93,63 @@ class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
         binding.tvLogin.setOnClickListener {
             this.reLogin(preferences)
+        }
+    }
+
+    private fun loadChatData() {
+        db.collection("chat")
+            .orderBy("timestamp", Query.Direction.ASCENDING)
+            .addSnapshotListener { value, error ->
+                if (error != null) {
+                    handleLoading(binding.loading, true)
+                    return@addSnapshotListener
+                }
+                chatList.clear()
+                for (doc in value!!) {
+                    val chat = doc.toObject(ChatModels::class.java)
+                    chatList.add(chat)
+                }
+                try {
+                    if (chatList.size > 0) {
+                        chatAdapter.updateChats(chatList).apply {
+                            binding.rvList.scrollToPosition(chatList.size - 1)
+                        }
+                    }
+                    handleLoading(binding.loading, false)
+                } catch (e: NullPointerException) {
+                }
+            }
+
+        binding.ivSend.setOnClickListener {
+            val message = binding.txtMessage.text.toString()
+            if (message.isNotEmpty()) {
+                if (preferences.getUserProfile().isPaid != "1") {
+                    if (preferences.getAdsCount() >= Constants.ADS_COUNT) {
+                        if (mInterstitialAd != null) {
+                            mInterstitialAd?.show(this)
+                            mInterstitialAd?.fullScreenContentCallback =
+                                object : FullScreenContentCallback() {
+                                    override fun onAdDismissedFullScreenContent() {
+                                        preferences.incrementAdsCount(true)
+                                        setInternalAds()
+                                        sendMessage(message)
+                                    }
+
+                                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                                        sendMessage(message)
+                                    }
+                                }
+                        } else {
+                            sendMessage(message)
+                        }
+                    } else {
+                        preferences.incrementAdsCount(false)
+                        sendMessage(message)
+                    }
+                } else {
+                    sendMessage(message)
+                }
+            }
         }
     }
 
@@ -156,8 +175,10 @@ class ChatActivity :BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
                     Log.warning("Hello World1212")
 
                 }
+
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     mInterstitialAd = interstitialAd
+//                    mInterstitialAd!!.show(this@ChatActivity)
                     Log.warning("Hello World6666666")
 
                 }

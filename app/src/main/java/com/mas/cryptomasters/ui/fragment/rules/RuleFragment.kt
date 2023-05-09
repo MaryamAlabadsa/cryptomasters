@@ -1,9 +1,11 @@
 package com.mas.cryptomasters.ui.fragment.rules
 
 import android.content.Intent
+import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.Visibility
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -15,9 +17,11 @@ import com.mas.cryptomasters.BaseFragment
 import com.mas.cryptomasters.adapters.CoinsAdapter
 import com.mas.cryptomasters.adapters.NotificationsAdapter
 import com.mas.cryptomasters.data.response.CoinsResponse
+import com.mas.cryptomasters.data.response.SearchResponse
 import com.mas.cryptomasters.data.response.home.Coin
 import com.mas.cryptomasters.databinding.FragmentRecommendBinding
 import com.mas.cryptomasters.databinding.FragmentRuleBinding
+import com.mas.cryptomasters.databinding.LoadingLayoutBinding
 import com.mas.cryptomasters.ui.othersActivity.NavigationActivity
 import com.mas.cryptomasters.utils.Constants
 import com.mas.cryptomasters.utils.Extensions.crToast
@@ -51,63 +55,93 @@ class RuleFragment : BaseFragment<FragmentRuleBinding>() {
         binding.svSearch.setOnClickListener {
             binding.svSearch.isIconified = false;
         }
+
         //when get result
-        viewModel.mutableRules.observe(this) {
+        viewModel.mutableRules.observe(this) { rules ->
             when {
-                it.reLogin -> requireActivity().reLogin(preferences)
-                it.error.isNotEmpty() -> {
+                rules.reLogin -> requireActivity().reLogin(preferences)
+                rules.error.isNotEmpty() -> {
                     handleLoading(binding.loading, true)
                     requireContext().crToast()
                 }
-                it.data != null -> {
+                else -> {
                     handleLoading(binding.loading, false)
+                    val coins = rules.data?.let { data ->
+                        when (data) {
+                            is CoinsResponse -> data.coins
+                            is SearchResponse -> data.coins
+                            else -> emptyList()
+                        }
+                    } ?: emptyList()
 
-                    coinList.clear()
-                    coinList.addAll((it.data as CoinsResponse).coins)
-                    coinsAdapter.updateAdapter(coinList)
+                    updateCoinsAdapter(coins)
                 }
             }
         }
+        coinsAdapter.updateAdapter(coinList, binding.svSearch.query.toString())
 
-        // search
-        binding.svSearch.setOnQueryTextListener(object :
-            SearchView.OnQueryTextListener {
+        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                coinsAdapter.clearAdapter()
+                handleLoading(binding.loading, false, "new")
+                if (query != null) {
+                    viewModel.searchCoins(query)
+                } else {
+                    viewModel.getAllCoins()
+                }
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                searchCoinList.clear()
-
-                if (newText?.length!! >= 2) {
-
-                    if (position == 1 || position == 2) {
-                        for (item in listedCoinList) {
-                            if (item.name.contains(newText)) {
-                                searchCoinList.add(item)
-                            }
-                        }
-                        coinsAdapter.updateAdapter(searchCoinList)
-                    } else {
-                        for (item in coinList) {
-                            if (item.name.contains(newText)) {
-                                searchCoinList.add(item)
-                            }
-                        }
-                        coinsAdapter.updateAdapter(searchCoinList)
-                    }
-                }
                 return false
             }
         })
         binding.svSearch.setOnCloseListener {
-            if (position == 1 || position == 2) {
-                coinsAdapter.updateAdapter(listedCoinList)
-            } else {
-                coinsAdapter.updateAdapter(coinList)
-            }
-            false
+            coinsAdapter.clearAdapter()
+            handleLoading(binding.loading, false, "new")
+            viewModel.getAllCoins()
+            true
         }
+
+
+//        binding.svSearch.setOnQueryTextListener(object :
+//            SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                searchCoinList.clear()
+//
+//                if (newText?.length!! >= 2) {
+//
+//                    if (position == 1 || position == 2) {
+//                        for (item in listedCoinList) {
+//                            if (item.name.contains(newText)) {
+//                                searchCoinList.add(item)
+//                            }
+//                        }
+//                        coinsAdapter.updateAdapter(searchCoinList)
+//                    } else {
+//                        for (item in coinList) {
+//                            if (item.name.contains(newText)) {
+//                                searchCoinList.add(item)
+//                            }
+//                        }
+//                        coinsAdapter.updateAdapter(searchCoinList)
+//                    }
+//                }
+//                return false
+//            }
+//        })
+//        binding.svSearch.setOnCloseListener {
+//            if (position == 1 || position == 2) {
+//                coinsAdapter.updateAdapter(listedCoinList)
+//            } else {
+//                coinsAdapter.updateAdapter(coinList)
+//            }
+//            false
+//        }
 
         // check the tap
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -152,6 +186,7 @@ class RuleFragment : BaseFragment<FragmentRuleBinding>() {
                                 override fun onAdDismissedFullScreenContent() {
                                     intentToRule()
                                 }
+
                                 override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                                     intentToRule()
                                 }
@@ -206,5 +241,22 @@ class RuleFragment : BaseFragment<FragmentRuleBinding>() {
         setInternalAds()
     }
 
+    private fun updateCoinsAdapter(coins: List<Coin>) {
+        coinList.clear()
+        coinList.addAll(coins)
+        coinsAdapter.updateAdapter(coinList)
+    }
 
+    fun handleLoading(binding: LoadingLayoutBinding, isError: Boolean, x: String) {
+        if (isError) {
+            binding.clOnLoading.visibility = View.GONE
+
+            binding.clLoading.visibility = View.VISIBLE
+            binding.clOnError.visibility = View.VISIBLE
+        } else if (x.equals("new"))
+            binding.clLoading.visibility = View.VISIBLE
+        else {
+            binding.clLoading.visibility = View.GONE
+        }
+    }
 }

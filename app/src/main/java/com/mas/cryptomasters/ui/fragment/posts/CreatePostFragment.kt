@@ -58,24 +58,10 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
     private var imageBase64List = ArrayList<String>()
     private lateinit var imageListAdapter: ImageListAdapter
 
-    private var mInterstitialAd: InterstitialAd? = null
-    private val adRequest: AdRequest = AdRequest.Builder().build()
 
     private val postRequest = CreatePostRequest()
 
     override fun init() {
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(requireActivity())
-            mInterstitialAd?.fullScreenContentCallback =
-                object : FullScreenContentCallback() {
-                    override fun onAdDismissedFullScreenContent() {
-//                        intentToRule()
-                    }
-                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-//                        intentToRule()
-                    }
-                }
-        }
         initImagesAdapter()
 
         binding.tvAddImage.setOnClickListener {
@@ -269,28 +255,5 @@ class CreatePostFragment : BaseFragment<FragmentCreatePostBinding>() {
         val description = descriptionString.toRequestBody(MultipartBody.FORM)
         viewModel.uploadVideo(description, body)
 
-    }
-    private fun setInternalAds() {
-        val Log = Logger.getLogger(ChatActivity::class.java.name)
-        Log.warning("Hello World")
-        InterstitialAd.load(context, Constants.INTERNAL_ADS, adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    mInterstitialAd = null
-                    Log.warning("Hello World1212")
-
-                }
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    mInterstitialAd = interstitialAd
-                    Log.warning("Hello World6666666")
-
-                }
-            })
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setInternalAds()
     }
 }

@@ -45,7 +45,6 @@ class PostDetailsFragment :
 
 
     override fun init() {
-
         if (!this.isAdded) {
             return
         }

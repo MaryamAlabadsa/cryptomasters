@@ -64,7 +64,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     fun handleLoading(binding: LoadingLayoutBinding, isError: Boolean) {
         if (isError) {
             binding.clOnLoading.visibility = View.GONE
-
             binding.clLoading.visibility = View.VISIBLE
             binding.clOnError.visibility = View.VISIBLE
         } else {

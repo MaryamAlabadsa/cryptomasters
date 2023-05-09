@@ -33,7 +33,7 @@ import java.io.File
 
 
 @AndroidEntryPoint
-class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
+class  ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private lateinit var appPagerAdapter: AppPagerAdapter
     val viewModel: ProfileViewModel by viewModels()

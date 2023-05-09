@@ -33,7 +33,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
 //        val marketId = intent.getStringExtra("marketId") ?: "bitcoin"
         val low_24h = preferenceHelper.getlow_24h()
         val high_24h = preferenceHelper.gethigh_24h()
-        binding.dayRange.text = high_24h + " / "+low_24h
+        binding.dayRange.text = high_24h + " / " + low_24h
         val marketId = preferenceHelper.getMarketId()
         viewModel.setId(marketId.lowercase())
         // set up the chart
@@ -62,12 +62,12 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
                     this.reLogin(preferenceHelper)
                 }
                 response.error.isNotEmpty() -> {
-                    handleLoading(binding.loading, true,"")
+                    handleLoading(binding.loading, true, "")
                     this.reLogin(preferenceHelper)
                 }
                 response.data != null && response.flag == 1 -> {
                     // update chart with new data
-                    handleLoading(binding.loading, false,"")
+                    handleLoading(binding.loading, false, "")
                     val data = viewModel.getChartData()
                     chart.data = data
                     chart.invalidate()
@@ -79,7 +79,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
             // update button appearance based on the selected index
             buttons.forEachIndexed { buttonIndex, button ->
                 if (buttonIndex == index) {
-                    handleLoading(binding.loading,false,"new")
+                    handleLoading(binding.loading, false, "new")
                     button.setBackgroundResource(R.drawable.selected_button_bg)
                     button.setTextColor(getColor(R.color.white))
                 } else {
@@ -89,15 +89,15 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
             }
         }
     }
-    fun handleLoading(binding: LoadingLayoutBinding, isError: Boolean,x: String) {
+
+    fun handleLoading(binding: LoadingLayoutBinding, isError: Boolean, x: String) {
         if (isError) {
             binding.clOnLoading.visibility = View.GONE
 
             binding.clLoading.visibility = View.VISIBLE
             binding.clOnError.visibility = View.VISIBLE
-        }else if (x.equals("new"))
+        } else if (x.equals("new"))
             binding.clLoading.visibility = View.VISIBLE
-
         else {
             binding.clLoading.visibility = View.GONE
         }

@@ -62,13 +62,10 @@ interface ApiService {
     suspend fun setVote(@Body body: VoteRequest): Response<BaseResponse>
 
     @GET("coins")
-    suspend fun getCoins(
-//        @Query("vs_currency") currency: String = "usd",
-//        @Query("order") order: String = "market_cap_desc",
-//        @Query("per_page") perPage: Int = 30,
-//        @Query("page") page: Int = 1,
-//        @Query("sparkline") sparkline: Boolean = false
-    ): Response<CoinsResponse>
+    suspend fun getCoins(): Response<CoinsResponse>
+
+    @POST("coins/search")
+    suspend fun searchCoins(@Body request: SearchRequest): Response<SearchResponse>
 
     @POST("like/post")
     suspend fun postLike(@Body body: LikePostRequest): Response<LikeResponse>

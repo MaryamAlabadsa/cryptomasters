@@ -1,7 +1,6 @@
 package com.mas.cryptomasters.core.api
 
 import com.mas.cryptomasters.data.models.PlanResponse
-import com.mas.cryptomasters.data.models.coin.Coins
 import com.mas.cryptomasters.data.request.*
 import com.mas.cryptomasters.data.request.LikePostRequest
 import com.mas.cryptomasters.data.response.*
@@ -11,7 +10,6 @@ import com.mas.cryptomasters.data.response.recommendations.Recommendations
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
-import retrofit2.http.Body
 import javax.inject.Inject
 
 class ApiRepository @Inject constructor(private val apiService: ApiService) {
@@ -33,6 +31,7 @@ class ApiRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getRecommendations(): Response<Recommendations> = apiService.getRecommendations()
     suspend fun setVote(body: VoteRequest): Response<BaseResponse> = apiService.setVote(body)
     suspend fun getCoins(): Response<CoinsResponse> = apiService.getCoins()
+    suspend fun searchCoins(query: SearchRequest): Response<SearchResponse> = apiService.searchCoins(query)
     suspend fun getMenuItems(): Response<PlanResponse> = apiService.getMenuItems()
     suspend fun postLike(body: LikePostRequest): Response<LikeResponse> = apiService.postLike(body)
     suspend fun removeLike(body: LikePostRequest): Response<BaseResponse> =

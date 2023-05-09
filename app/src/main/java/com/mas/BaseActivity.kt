@@ -43,26 +43,26 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
 
 
 
-    fun setAds(view: ConstraintLayout) {
-        val mAdView = AdView(applicationContext)
-        mAdView.adSize = AdSize.BANNER
-        mAdView.adUnitId = Constants.BANNER_ADS
-        val adRequest: AdRequest = AdRequest.Builder()
-            .build()
-        mAdView.loadAd(adRequest)
-        mAdView.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                view.addView(mAdView)
-                view.visibility = View.VISIBLE
-            }
-
-            override fun onAdFailedToLoad(p0: LoadAdError) {
-                super.onAdFailedToLoad(p0)
-                view.visibility = View.GONE
-            }
-        }
-
-    }
+//    fun setAds(view: ConstraintLayout) {
+//        val mAdView = AdView(applicationContext)
+//        mAdView.adSize = AdSize.BANNER
+//        mAdView.adUnitId = Constants.BANNER_ADS
+//        val adRequest: AdRequest = AdRequest.Builder()
+//            .build()
+//        mAdView.loadAd(adRequest)
+//        mAdView.adListener = object : AdListener() {
+//            override fun onAdLoaded() {
+//                view.addView(mAdView)
+//                view.visibility = View.VISIBLE
+//            }
+//
+//            override fun onAdFailedToLoad(p0: LoadAdError) {
+//                super.onAdFailedToLoad(p0)
+//                view.visibility = View.GONE
+//            }
+//        }
+//
+//    }
 
 
     fun navigateToActivity(
