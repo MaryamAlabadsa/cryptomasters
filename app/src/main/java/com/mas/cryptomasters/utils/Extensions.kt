@@ -160,7 +160,7 @@ object Extensions {
         for (input in inputs) {
             if (input.text.trim().isEmpty()) {
                 isValid = true
-                input.error = "*"
+                input.error = "*11"
             } else {
                 input.error = null
             }

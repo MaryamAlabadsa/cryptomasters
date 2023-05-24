@@ -3,7 +3,6 @@ package com.mas.cryptomasters.ui.fragment.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.*
@@ -142,9 +141,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             binding.tvCreatePost.visibility = View.GONE
         } else {
             preferences.getUserProfile().let {
-                binding.ivProfile.loadWebImage(it.avatar + "")
-                binding.tvName.text = it.name
-                binding.tvMobile.text = it.phone
+                binding.ivProfile.loadWebImage(it .avatar + "")
+                binding.tvName.text = it .name
+                binding.tvMobile.text = it .phone
             }
         }
     }

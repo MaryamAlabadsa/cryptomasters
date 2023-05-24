@@ -56,8 +56,8 @@ class ContactFragment : BaseFragment<FragmentContactBinding>() {
             val message = binding.txtMessage.text.toString()
 
             if (!preferences.isGustUser()) {
-                name = preferences.getUserProfile().name.toString()
-                phone = preferences.getUserProfile().phone.toString()
+                name = preferences.getUserProfile() .name.toString()
+                phone = preferences.getUserProfile() .phone.toString()
             } else {
                 binding.cpCode.registerCarrierNumberEditText(binding.txtPhone)
                 name = binding.txtName.text.toString()
@@ -90,25 +90,25 @@ class ContactFragment : BaseFragment<FragmentContactBinding>() {
 
 
         binding.ivTelgram.setOnClickListener {
-            if (preferences.getAppSettings().tg != null && preferences.getAppSettings().tg == "null") {
+            if (preferences.getAppSettings() .tg != null && preferences.getAppSettings() .tg == "null") {
                 return@setOnClickListener
             }
 
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(Constants.telegramLink + preferences.getAppSettings().tg)
+                    Uri.parse(Constants.telegramLink + preferences.getAppSettings() .tg)
                 )
             )
         }
         binding.ivWhatsApp.setOnClickListener {
-            if (preferences.getAppSettings().whts != null && preferences.getAppSettings().whts == "null") {
+            if (preferences.getAppSettings() .whts != null && preferences.getAppSettings() .whts == "null") {
                 return@setOnClickListener
             }
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(Constants.whatsappLink + preferences.getAppSettings().whts)
+                    Uri.parse(Constants.whatsappLink + preferences.getAppSettings() .whts)
                 )
             )
         }

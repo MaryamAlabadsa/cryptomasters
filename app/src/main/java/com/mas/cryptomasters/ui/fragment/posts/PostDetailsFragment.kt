@@ -99,7 +99,7 @@ class PostDetailsFragment :
                     viewModel.blockUser(currentPostsData)
                 }
             }).setSettings(
-                currentPostsData.user!!.id == preferences.getUserProfile().id,
+                currentPostsData.user!!.id == preferences.getUserProfile() .id,
                 isGuest = preferences.isGustUser()
             )
                 .show()

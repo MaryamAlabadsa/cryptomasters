@@ -19,7 +19,7 @@ class EditProfileFragment(val viewModel: ProfileViewModel) :
                 requireActivity().showProgress()
                 viewModel.editProfileRequest = EditProfileRequest(
                     name = binding.txtName.text.toString(),
-                    avatar = preferences.getUserProfile().avatar + ""
+                    avatar = preferences.getUserProfile() .avatar + ""
                 )
                 viewModel.updateProfile()
             } else {
@@ -30,8 +30,8 @@ class EditProfileFragment(val viewModel: ProfileViewModel) :
 
     private fun setCurrentData() {
         preferences.getUserProfile().let {
-            binding.txtName.setText(it.name)
-            binding.txtPhone.setText(it.phone)
+            binding.txtName.setText(it .name)
+            binding.txtPhone.setText(it .phone)
             binding.txtPhone.isEnabled = false
         }
 

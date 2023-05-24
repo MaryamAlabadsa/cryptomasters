@@ -3,6 +3,7 @@ package com.mas.cryptomasters.ui.login
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.mas.BaseActivity
+import com.mas.cryptomasters.ChatActivity
 import com.mas.cryptomasters.R
 import com.mas.cryptomasters.data.request.LoginRequest
 import com.mas.cryptomasters.data.response.ProfileResponse
@@ -20,6 +21,7 @@ import com.mas.cryptomasters.utils.Extensions.showProgress
 import com.mas.cryptomasters.utils.LocaleHelper
 import com.mas.cryptomasters.utils.Navigate
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.logging.Logger
 
 
 @AndroidEntryPoint
@@ -62,10 +64,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                     binding.txtPhone.error = "*"
             }
         }
+        val Log = Logger.getLogger(ChatActivity::class.java.name)
 
         viewModel.profile.observe(this) {
             when{
                 it.data !=null -> {
+                    Log.warning("maryammm "+(it.data as ProfileResponse))
+                    Log.warning("maryammm " + ((it.data as ProfileResponse).profileObject?.apiToken
+                        ?: "kkk"))
+
                     preferenceHelper.setUserProfile((it.data as ProfileResponse).profileObject!!)
                         .apply {
                             preferenceHelper.setGuestStatus(false).also {

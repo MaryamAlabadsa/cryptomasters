@@ -47,7 +47,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
         }
 
 
-        if (preferences.getAppSettings().isHide == "0") {
+        if (preferences.getAppSettings() .isHide == "0") {
             binding.tvAds.visibility = View.GONE
         }
 

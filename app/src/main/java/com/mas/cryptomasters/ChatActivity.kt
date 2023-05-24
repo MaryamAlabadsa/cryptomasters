@@ -123,7 +123,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         binding.ivSend.setOnClickListener {
             val message = binding.txtMessage.text.toString()
             if (message.isNotEmpty()) {
-                if (preferences.getUserProfile().isPaid != "1") {
+                if (preferences.getUserProfile() .isPaid != "1") {
                     if (preferences.getAdsCount() >= Constants.ADS_COUNT) {
                         if (mInterstitialAd != null) {
                             mInterstitialAd?.show(this)
@@ -155,10 +155,10 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
 
     private fun sendMessage(message: String) {
         val chatModels = ChatModels(
-            avatar = "${preferences.getUserProfile().avatar}",
-            idUser = preferences.getUserProfile().id!!,
+            avatar = "${preferences.getUserProfile() .avatar}",
+            idUser = preferences.getUserProfile() .id!!,
             message = message,
-            name = preferences.getUserProfile().name.toString(),
+            name = preferences.getUserProfile() .name.toString(),
         )
         binding.txtMessage.setText("")
         db.collection("chat")

@@ -107,7 +107,7 @@ class CommentAdapter(
                     override fun onBlock() {
                     }
                 }).setSettings(
-                    preferenceHelper.getUserProfile().id == it.user.id,
+                    preferenceHelper.getUserProfile() .id == it.user.id,
                     isFromComment = true,
                     isGuest = preferenceHelper.isGustUser()
                 )

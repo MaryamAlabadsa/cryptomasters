@@ -1,5 +1,6 @@
 package com.mas.cryptomasters.core.di
 
+import com.google.gson.GsonBuilder
 import com.mas.cryptomasters.BuildConfig
 import com.mas.cryptomasters.core.api.*
 import com.mas.cryptomasters.core.api.api2.ApiRepository2
@@ -65,11 +66,52 @@ class ApplicationModule {
                     })
                     .addInterceptor(interceptor)
                     .build()
-            } else OkHttpClient.Builder().build()
+            } else {
+                val interceptor =
+                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                OkHttpClient().newBuilder()
+                    .connectTimeout(10, TimeUnit.MINUTES)
+                    .readTimeout(10, TimeUnit.MINUTES)
+                    .writeTimeout(10, TimeUnit.MINUTES)
+                    .callTimeout(10, TimeUnit.MINUTES)
+                    .addInterceptor(Interceptor { chain: Interceptor.Chain ->
+                        if (preferenceHelper.isGustUser()) {
+                            val request = chain.request()
+                                .newBuilder()
+                                .addHeader("Accept", "application/json")
+                                .addHeader("Accept-Language", preferenceHelper.getLanguage())
+                                .addHeader("Content-Type", "application/json; charset=utf-8")
+                                .build()
+                            chain.proceed(request)
+                        } else {
+                            val request = chain.request()
+                                .newBuilder()
+                                .addHeader(
+                                    "Authorization",
+                                    "Bearer ${preferenceHelper.getUserProfile().apiToken}"
+                                )
+                                .addHeader("Accept", "application/json")
+                                .addHeader("Accept-Language", preferenceHelper.getLanguage())
+                                .addHeader("Content-Type", "application/json; charset=utf-8")
+                                .build()
+                            chain.proceed(request)
+                        }
+                    })
+                    .addInterceptor(interceptor)
+                    .build()
+            }
+//                OkHttpClient.Builder().build()
+
+//        val gson = GsonBuilder()
+//            .serializeNulls()
+//            .serializeSpecialFloatingPointValues()
+//            .setLenient()
+//            .create()
 
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()
     }
@@ -114,9 +156,16 @@ class ApplicationModule {
                     .build()
             } else OkHttpClient.Builder().build()
 
+//        val gson = GsonBuilder()
+//            .serializeNulls()
+//            .serializeSpecialFloatingPointValues()
+//            .setLenient()
+//            .create()
+
         return Retrofit.Builder()
             .baseUrl(baseUrl())
             .addConverterFactory(GsonConverterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()
     }

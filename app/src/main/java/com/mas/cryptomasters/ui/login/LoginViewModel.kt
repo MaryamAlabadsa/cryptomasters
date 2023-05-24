@@ -18,18 +18,6 @@ class LoginViewModel @Inject constructor(private var apiRepository: ApiRepositor
     lateinit var loginRequest: LoginRequest
     var profile: MutableLiveData<Response<Any?>> = MutableLiveData()
 
-//    fun startLogin() {
-//        viewModelScope.launch {
-//            apiRepository.login(loginRequest)
-//                .let {
-//                    when (it.isRequestSuccess(it.code())) {
-//                        RESPONSE.SUCCESS -> profile.postValue(Response(data = it.body()!!))
-//                        RESPONSE.ERROR -> profile.postValue(Response(error = "$it"))
-//                        RESPONSE.AUT -> profile.postValue(Response(reLogin = true))
-//                    }
-//                }
-//        }
-//    }
     fun startLogin() {
         viewModelScope.launch {
             apiRepository.login(loginRequest)

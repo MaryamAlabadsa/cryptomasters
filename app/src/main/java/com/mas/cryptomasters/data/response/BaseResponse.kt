@@ -7,10 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 open class BaseResponse(
-    @SerializedName("code")
-    val code: Int? = 0,
-    @SerializedName("message")
-    val message: String? = "",
-    @SerializedName("success")
-    val success: String? = ""
+    @SerializedName("code"    ) var code    : Int?    = null,
+    @SerializedName("message" ) var message : String? = null,
+    @SerializedName("success" ) var success : String? = null,
 ) : Parcelable

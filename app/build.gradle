@@ -10,17 +10,32 @@ plugins {
 }
 // key-password = com.mas.cryptomasters
 android {
+    signingConfigs {
+        debug {
+            storePassword 'com.mas.cryptomasters'
+            keyPassword 'com.mas.cryptomasters'
+            keyAlias 'key0'
+            storeFile file('D:\\Crypto Masters app 2\\Crypto Masters app\\keys\\key')
+        }
+        release {
+            storePassword 'com.mas.cryptomasters'
+            keyPassword 'com.mas.cryptomasters'
+            keyAlias 'key0'
+            storeFile file('D:\\Crypto Masters app 2\\Crypto Masters app\\keys\\key')
+        }
+    }
     compileSdk 32
 
     defaultConfig {
         applicationId "com.mas.cryptomasters"
         minSdk 23
         targetSdk 32
-        versionCode 11
-        versionName "1.7.5"
+        versionCode 14
+        versionName "1.7.8"
         buildConfigField 'String', 'BASE_URL', "\"https://msscrypto.com/api/v1/\""
         buildConfigField 'String', 'WEB_URL', "\"https://msscrypto.com/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -83,11 +98,11 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.40.5'
 
 
-
     //retrofit
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
 
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
@@ -123,7 +138,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'com.karumi:dexter:6.2.3'
-     implementation 'com.github.mohammedsalout:time-ago:1.7.0'
+    implementation 'com.github.mohammedsalout:time-ago:1.7.0'
 
     //admob
     implementation 'com.google.android.gms:play-services-ads:20.6.0'

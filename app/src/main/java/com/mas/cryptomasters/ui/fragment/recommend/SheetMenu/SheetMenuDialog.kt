@@ -46,15 +46,15 @@ class SheetMenuDialog(private val menuViewModel: MenuViewModel) : BottomSheetDia
         binding.whatup.setOnClickListener {
             val whatsappIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://api.whatsapp.com/send?phone=${preferences.getAppSettings().whts}")
+                Uri.parse("https://api.whatsapp.com/send?phone=${preferences.getAppSettings() .whts}")
             )
             startActivity(whatsappIntent)
         }
         binding.tel.setOnClickListener {
-         val base="http://telegram.me/"
-            val tel=preferences.getAppSettings().tg
+            val base = "http://telegram.me/"
+            val tel = preferences.getAppSettings() .tg
             val telegramIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse(base+tel))
+                Intent(Intent.ACTION_VIEW, Uri.parse(base + tel))
             startActivity(telegramIntent)
         }
         // Observe changes to menu items

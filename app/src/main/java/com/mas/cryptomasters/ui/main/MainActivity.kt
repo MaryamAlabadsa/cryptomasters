@@ -60,7 +60,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         handleIfHaveNotifications()
 
-        if (preferenceHelper.getUserProfile().isPaid != "1") {
+        if (preferenceHelper.getUserProfile() .isPaid != "1") {
 //            setAds(binding.viewForAds)
         }
     }

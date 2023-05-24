@@ -40,7 +40,7 @@ class ChatAdapter(val preferenceHelper: PreferenceHelper) :
     inner class MyViewHolder(val binding: ChatItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setView(it: ChatModels) {
-            if (it.idUser == preferenceHelper.getUserProfile().id) {
+            if (it.idUser == preferenceHelper.getUserProfile() .id) {
                 binding.SenderMessageLayout.visibility = View.VISIBLE
                 binding.receivedMessageLayout.visibility = View.GONE
 

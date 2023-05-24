@@ -22,25 +22,25 @@ class DeleteAdsDialog constructor(context: Context, val preferences: PreferenceH
 
 
         binding.ivTelgram.setOnClickListener {
-            if (preferences.getAppSettings().tg != null && preferences.getAppSettings().tg == "null") {
+            if (preferences.getAppSettings() .tg != null && preferences.getAppSettings() .tg == "null") {
                 return@setOnClickListener
             }
 
             context.startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(Constants.telegramLink + preferences.getAppSettings().tg)
+                    Uri.parse(Constants.telegramLink + preferences.getAppSettings() .tg)
                 )
             )
         }
         binding.ivWhatsApp.setOnClickListener {
-            if (preferences.getAppSettings().whts != null && preferences.getAppSettings().whts == "null") {
+            if (preferences.getAppSettings() .whts != null && preferences.getAppSettings() .whts == "null") {
                 return@setOnClickListener
             }
             context.startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(Constants.whatsappLink + preferences.getAppSettings().whts)
+                    Uri.parse(Constants.whatsappLink + preferences.getAppSettings() .whts)
                 )
             )
         }

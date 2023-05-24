@@ -114,7 +114,7 @@ class NavigationActivity : BaseActivity<ActivityOthersBinding>(ActivityOthersBin
         }
 
 
-        if (preferenceHelper.getUserProfile().isPaid != "1") {
+        if (preferenceHelper.getUserProfile() .isPaid != "1") {
 //            setAds(binding.viewForAds)
         }
     }

@@ -42,7 +42,7 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
 
     override fun init() {
 
-        if (!preferences.getUserProfile().isPaid.equals("1")) {
+        if (!preferences.getUserProfile() .isPaid.equals("1")) {
 //            if (mInterstitialAd != null) {
 //                mInterstitialAd?.show(requireActivity())
 //                mInterstitialAd?.fullScreenContentCallback =
@@ -97,7 +97,7 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
 
 
             recommendAdapter.showAdsObservable.observe(this) {
-                if (preferences.getUserProfile().isPaid != "1") {
+                if (preferences.getUserProfile() .isPaid != "1") {
 //                    if (mInterstitialAd != null) {
 //                        mInterstitialAd?.show(requireActivity())
 //                        mInterstitialAd?.fullScreenContentCallback =
