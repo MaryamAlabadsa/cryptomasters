@@ -2,7 +2,6 @@ package com.mas.cryptomasters.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
@@ -11,12 +10,8 @@ import com.mas.cryptomasters.R
 import com.mas.cryptomasters.core.pref.PreferenceHelper
 import com.mas.cryptomasters.data.response.recommendations.RecommendData
 import com.mas.cryptomasters.databinding.RecommendItemsBinding
-import com.mas.cryptomasters.ui.othersActivity.NavigationActivity
-import com.mas.cryptomasters.utils.Constants
-import com.mas.cryptomasters.utils.Extensions.loadWebImage
 import com.mas.cryptomasters.utils.Extensions.percentageFormat
 import com.mas.cryptomasters.utils.Extensions.setTimeFormat
-import com.mas.cryptomasters.utils.Navigate
 
 class RecommendAdapter : RecyclerView.Adapter<RecommendAdapter.MyViewHolder>() {
     private var data: ArrayList<RecommendData> = ArrayList()
@@ -53,10 +48,22 @@ class RecommendAdapter : RecyclerView.Adapter<RecommendAdapter.MyViewHolder>() {
         }
     }
 
+//    @SuppressLint("NotifyDataSetChanged")
+//    fun updateAdapter(newData: List<RecommendData>) {
+//        data.clear()
+//        data.addAll(newData)
+//        notifyDataSetChanged()
+//    }
+
     @SuppressLint("NotifyDataSetChanged")
-    fun updateAdapter(newData: List<RecommendData>) {
+    fun setList(list: List<RecommendData>) {
         data.clear()
-        data.addAll(newData)
+        data = list as ArrayList<RecommendData>
+        notifyDataSetChanged()
+    }
+
+    fun addToList(myList: List<RecommendData>) {
+        data.addAll(myList)
         notifyDataSetChanged()
     }
 
@@ -67,11 +74,11 @@ class RecommendAdapter : RecyclerView.Adapter<RecommendAdapter.MyViewHolder>() {
 
         fun setView(it: RecommendData) {
             binding.tvTitle.text = it.title
-            binding.tvDate.text = it.createdAt.setTimeFormat(binding.tvDate.context)
+            binding.tvDate.text = it.createdAt?.setTimeFormat(binding.tvDate.context) ?: ""
             binding.tvText.text = it.content
-            binding.ivPostImage.loadWebImage(it.image + "", isProfile = false)
+//            binding.ivPostImage.loadWebImage(it.image + "", isProfile = false)
 
-            binding.pbUserRate.progress = it.upCount.toInt()
+            binding.pbUserRate.progress = it.upCount?.toInt() ?: 0
             "${it.upCount.toString().percentageFormat()} ${context.getString(R.string.up)}".also { binding.tvUpValue.text = it }
             "${
                 it.downCount.toString().percentageFormat()

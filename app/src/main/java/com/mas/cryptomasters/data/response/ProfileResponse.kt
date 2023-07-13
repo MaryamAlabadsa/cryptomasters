@@ -10,28 +10,20 @@ data class ProfileResponse(
 ) : BaseResponse()
 
 data class ProfileObject(
-    @SerializedName("api_token")
-    val apiToken: String? = "",
-    @SerializedName("avatar")
-    val avatar: String? = "",
-    @SerializedName("created_at")
-    val createdAt: String? = "",
-    @SerializedName("device_token")
-    val deviceToken: String? = "",
-    @SerializedName("id")
-    val id: Int? = 0,
-    @SerializedName("isActive")
-    val isActive: String? = "",
-    @SerializedName("isCompleted")
-    val isCompleted: String? = "",
-    @SerializedName("isPaid")
-    val isPaid: String? = "",
-    @SerializedName("name")
-    val name: String? = "",
-    @SerializedName("phone")
-    val phone: String? = "",
-    @SerializedName("updated_at")
-    val updatedAt: String? = "",
-    @SerializedName("posts")
-    var posts: ArrayList<PostsData>? = null
+    @SerializedName("id"            ) var id           : Int?              = null,
+    @SerializedName("name"          ) var name         : String?           = null,
+    @SerializedName("phone"         ) var phone        : String?           = null,
+    @SerializedName("email"         ) var email        : String?           = null,
+    @SerializedName("registerBy"    ) var registerBy   : String?           = null,
+    @SerializedName("api_token"     ) var apiToken     : String?           = null,
+    @SerializedName("avatar"        ) var avatar       : String?           = null,
+    @SerializedName("device_token"  ) var deviceToken  : String?           = null,
+    @SerializedName("isCompleted"   ) var isCompleted  : String?           = null,
+    @SerializedName("isActive"      ) var isActive     : String?           = null,
+    @SerializedName("isPaid"        ) var isPaid       : String?           = null,
+    @SerializedName("subscribe_end" ) var subscribeEnd : String?           = null,
+    @SerializedName("created_at"    ) var createdAt    : String?           = null,
+    @SerializedName("updated_at"    ) var updatedAt    : String?           = null,
+    @SerializedName("posts"         ) var posts        : ArrayList<PostsData> = arrayListOf()
+
 )

@@ -12,6 +12,7 @@ import com.google.android.gms.ads.*
 import com.google.gson.Gson
 import com.mas.cryptomasters.core.pref.PreferenceHelper
 import com.mas.cryptomasters.data.models.NotificationsModels
+import com.mas.cryptomasters.databinding.LoadingLayoutBinding
 import com.mas.cryptomasters.utils.Constants
 import com.mas.cryptomasters.utils.Extensions.hideProgress
 import com.mas.cryptomasters.utils.Extensions.isPhoneIsConnected
@@ -42,6 +43,15 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
 
 
 
+    fun handleLoading(binding: LoadingLayoutBinding, isError: Boolean) {
+        if (isError) {
+            binding.clOnLoading.visibility = View.GONE
+            binding.clLoading.visibility = View.VISIBLE
+            binding.clOnError.visibility = View.VISIBLE
+        } else {
+            binding.clLoading.visibility = View.GONE
+        }
+    }
 
 //    fun setAds(view: ConstraintLayout) {
 //        val mAdView = AdView(applicationContext)

@@ -110,6 +110,8 @@
             android:text="@string/login"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/tvForgetPassword" />
+
+
         <TextView
             android:id="@+id/tvTerms"
             android:layout_width="match_parent"
@@ -135,6 +137,70 @@
             android:textColor="@color/them"
             android:textSize="@dimen/sp14"
             app:layout_constraintTop_toBottomOf="@id/tvTerms" />
+
+
+        <LinearLayout
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:textColor="@color/them"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/tvSingUp" >
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="@color/border"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:gravity="center"
+                android:padding="@dimen/dp8"
+                android:text="OR"
+                android:textColor="@color/them"
+                android:textSize="@dimen/sp14"
+                />
+            <View
+                android:id="@+id/view22"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="@color/border"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            app:layout_constraintEnd_toEndOf="@+id/tvW"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt"
+            tools:ignore="MissingConstraints" />
+
+<!--        <com.facebook.login.widget.LoginButton-->
+<!--            android:id="@+id/faceBook_login_button"-->
+<!--            android:layout_width="217dp"-->
+<!--            android:layout_height="41dp"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/sign_in_button"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/sign_in_button"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/sign_in_button"-->
+<!--            tools:ignore="MissingClass,MissingConstraints" />-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

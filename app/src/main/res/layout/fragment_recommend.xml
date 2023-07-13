@@ -26,60 +26,138 @@
         android:paddingHorizontal="@dimen/dp15"
         android:paddingTop="@dimen/dp8"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clTop">
+        app:layout_constraintTop_toBottomOf="@id/clTop"
+        tools:ignore="NotSibling">
 
-        <TextView
-            android:id="@+id/tvTop"
-            style="@style/boldFont"
+        <LinearLayout
+            android:id="@+id/linear2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_b"
-            android:paddingVertical="@dimen/dp5"
-            android:text="@string/recommended_crypto"
-            android:textColor="@color/them_dark"
-            android:textSize="@dimen/sp18"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="15dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvList"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTop" />
+            <TextView
+                android:id="@+id/tvTop"
+                style="@style/boldFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_b"
+                android:paddingVertical="@dimen/dp5"
+                android:text="@string/recommended_crypto"
+                android:textColor="@color/them_dark"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/daily_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp8"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/btn_bg2"
+                    android:text="@string/Daily"
+                    android:textColor="@color/white"
+                    tools:layout_editor_absoluteX="129dp"
+                    tools:layout_editor_absoluteY="256dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/Weakly_btn"
+                    android:textAllCaps="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp8"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg1"
+                    android:text="@string/Weakly"
+                    android:textColor="@color/them"
+                    tools:layout_editor_absoluteX="180dp"
+                    tools:layout_editor_absoluteY="191dp"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/Monthly_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp8"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/btn_bg1"
+                    android:text="@string/Monthly"
+                    android:textColor="@color/them"
+                    tools:layout_editor_absoluteX="145dp"
+                    tools:layout_editor_absoluteY="142dp" />
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/loading2"
+                layout="@layout/loading_layout" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvList"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp8" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
             android:visibility="gone"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTop">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/recommended_crypto_title"
                 android:textColor="@color/them"
-                android:textStyle="bold"
                 android:textSize="@dimen/sp18"
-                android:text="@string/recommended_crypto_title" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/recommended_crypto_text"
                 android:textAlignment="center"
-                android:textColor="@color/them"
-                android:text="@string/recommended_crypto_text" />
+                android:textColor="@color/them" />
 
             <ImageView
                 android:id="@+id/imageView"

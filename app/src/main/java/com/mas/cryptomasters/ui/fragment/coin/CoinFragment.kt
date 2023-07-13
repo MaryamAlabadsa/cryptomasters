@@ -1,5 +1,6 @@
 package com.mas.cryptomasters.ui.fragment.coin
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdError
@@ -14,6 +15,7 @@ import com.mas.cryptomasters.data.Response
 import com.mas.cryptomasters.data.models.coin.Coins
 import com.mas.cryptomasters.databinding.FragmentCoinsBinding
 import com.mas.cryptomasters.utils.Constants
+import com.mas.cryptomasters.utils.Extensions
 import com.mas.cryptomasters.utils.Extensions.crToast
 import com.mas.cryptomasters.utils.Extensions.reLogin
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +35,13 @@ class CoinFragment : BaseFragment<FragmentCoinsBinding>() {
         coinsAdapter = CoinAdapter(preferences, requireActivity())
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = coinsAdapter
-
+        val homePosts = preferences.getCoinsContent()
+        if (homePosts.isEmpty()) {
+            viewModel.initPagination()
+        } else {
+            handleLoading(binding.loading, false)
+            coinsAdapter.updateAdapter(homePosts) // Update the adapter with the stored data
+        }
         viewModel.coins.observe(this) { coins ->
             if (mInterstitialAd == null) {
                 InterstitialAd.load(requireContext(), Constants.INTERNAL_ADS, adRequest,
@@ -64,7 +72,7 @@ class CoinFragment : BaseFragment<FragmentCoinsBinding>() {
         }
 
         // Initialize pagination logic
-        viewModel.initPagination()
+//        viewModel.initPagination()
 
         // Set up scroll listener to fetch next page of items
 //    binding.rvList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -88,6 +96,7 @@ class CoinFragment : BaseFragment<FragmentCoinsBinding>() {
             }
             coins.data != null && coins.flag == 1 -> {
                 coinsAdapter.updateAdapter(coins.data as List<Coins>)
+                preferences.setCoinsContent(coins.data as List<Coins>)
                 handleLoading(binding.loading, false)
             }
         }

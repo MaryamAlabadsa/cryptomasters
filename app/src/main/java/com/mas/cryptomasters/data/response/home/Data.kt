@@ -2,7 +2,6 @@ package com.mas.cryptomasters.data.response.home
 
 
 import com.google.gson.annotations.SerializedName
-
 data class Data(
     @SerializedName("coins")
     val coins: List<Coin>,

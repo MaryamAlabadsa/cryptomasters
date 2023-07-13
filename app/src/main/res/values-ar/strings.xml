@@ -116,6 +116,10 @@
     <string name="user_was_block">تم حظر المستخدم</string>
     <string name="blockUser">حظر المستخدم</string>
     <string name="no_connection">لايوجد إتصال بالإنترنت!</string>
+    <string name="Weakly">أسبوعي</string>
+    <string name="Daily">يومي</string>
+    <string name="Monthly">شهري</string>
+    <string name="analysis">تحليلات </string>
 
     <string-array name="reports_list">
         <item>العري </item>

@@ -28,6 +28,9 @@ interface ApiService {
     @POST("login")
     suspend fun login(@Body any: Any): Response<ProfileResponse>
 
+    @POST("socialLogin")
+    suspend fun loginByGoogle(@Body any: Any): Response<ProfileResponse>
+
     @POST("register")
     suspend fun register(@Body any: Any): Response<ProfileResponse>
 
@@ -58,6 +61,20 @@ interface ApiService {
     @GET("recommendations")
     suspend fun getRecommendations(): Response<Recommendations>
 
+    @GET("recommendation/daily")
+    suspend fun getDailyRecommendations
+                (@Query("page") page: Int): Response<Recommendations>
+
+    @GET("recommendation/monthly")
+    suspend fun getMonthlyRecommendations
+                (@Query("page") page: Int): Response<Recommendations>
+
+    @GET("recommendation/weakly")
+    suspend fun getWeaklyRecommendations
+                (@Query("page") page: Int): Response<Recommendations>
+    @GET("analyses")
+    suspend fun getAnalytic(): Response<Analytic>
+
     @POST("user/vote")
     suspend fun setVote(@Body body: VoteRequest): Response<BaseResponse>
 
@@ -76,7 +93,7 @@ interface ApiService {
     @GET("user/notifications")
     suspend fun getNotifications(): Response<NotificationsResponse>
 
-//todo
+    //todo
     @POST("read/notifications")
     suspend fun readNotifications(@Body boy: ReadNotificationsRequest): Response<BaseResponse>
 
@@ -130,7 +147,7 @@ interface ApiService {
     @GET("unblock/{id}")
     suspend fun unBlockUser(@Path("id") id: String): Response<BaseResponse>
 
-   @GET("plans")
+    @GET("plans")
     suspend fun getMenuItems(): Response<PlanResponse>
 
 

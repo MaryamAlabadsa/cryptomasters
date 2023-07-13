@@ -3,24 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable-xhdpi/btn_bg2.xml" value="0.2095" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/ic_notification.xml" value="0.2095" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/selected_button_bg.xml" value="0.1" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/selected_button_text_color.xml" value="0.1" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/text_color_selector.xml" value="0.2375" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/drawable/unselected_button_bg.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_analytic.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_analytic_data.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_chart.xml" value="0.4" />
-        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_login.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_chat.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_main.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_player.xml" value="0.1" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_register.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/activity_splash.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/analytics_item.xml" value="0.20436083796494228" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/app_bar.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.1936725096194955" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/coin.xml" value="0.22826086956521738" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/crypto_progress.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_coin.xml" value="0.17633726201269265" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_coins.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_create_post.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_home.xml" value="1.0" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_post_details.xml" value="0.20521590423257802" />
-        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_recommend.xml" value="0.1936725096194955" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_profile.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_recommend.xml" value="0.176" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_recommend_details.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_rule.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/fragment_terms.xml" value="0.20521590423257802" />
         <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/loading_layout.xml" value="0.1" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/layout/recommend_items.xml" value="0.20521590423257802" />
+        <entry key="..\:/sannad/cryptomasters/app/src/main/res/menu/main_menu.xml" value="0.536" />
       </map>
     </option>
   </component>

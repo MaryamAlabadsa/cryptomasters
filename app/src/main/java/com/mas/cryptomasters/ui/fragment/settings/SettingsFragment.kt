@@ -1,28 +1,28 @@
 package com.mas.cryptomasters.ui.fragment.settings
 
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.OnCompleteListener
 import com.mas.cryptomasters.BaseFragment
 import com.mas.cryptomasters.R
-import com.mas.cryptomasters.databinding.FragmentCoinBinding
 import com.mas.cryptomasters.databinding.FragmentSettingsBinding
 import com.mas.cryptomasters.ui.dialogs.DeleteAdsDialog
 import com.mas.cryptomasters.ui.dialogs.LanguageDialog
 import com.mas.cryptomasters.ui.fragment.home.HomeFragmentViewModel
-import com.mas.cryptomasters.ui.fragment.profile.ProfileFragment
 import com.mas.cryptomasters.ui.login.LoginActivity
 import com.mas.cryptomasters.ui.othersActivity.NavigationActivity
 import com.mas.cryptomasters.utils.AlertAction
-import com.mas.cryptomasters.utils.Constants
 import com.mas.cryptomasters.utils.Extensions.navigateToActivity
 import com.mas.cryptomasters.utils.Extensions.reLogin
 import com.mas.cryptomasters.utils.Extensions.showAlert
 import com.mas.cryptomasters.utils.Navigate
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
@@ -31,10 +31,15 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     private var bundle: Bundle = Bundle()
     private var languageDialog: LanguageDialog? = null
     private lateinit var deleteAdsDialog: DeleteAdsDialog
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun getViewBinding() = FragmentSettingsBinding.inflate(layoutInflater)
 
     override fun init() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
 
         deleteAdsDialog = DeleteAdsDialog(requireContext(), preferences)
 
@@ -86,15 +91,28 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
                     title = getString(R.string.log_out),
                     action = object : AlertAction {
                         override fun onConfirm() {
-                            preferences.getUserProfile()
-                            requireActivity().reLogin(preferences)
+                            if (mGoogleSignInClient != null) {
+                                mGoogleSignInClient.signOut()
+                                    .addOnCompleteListener(requireActivity()) { task ->
+                                        if (task.isSuccessful) {
+                                            preferences.getUserProfile()
+                                            requireActivity().reLogin(preferences)
+
+                                        } else {
+                                            // Handle sign out failure
+                                        }
+                                    }
+                            } else {
+                                preferences.getUserProfile()
+                                requireActivity().reLogin(preferences)
+
+                            }
                         }
                     }
                 )
             } else {
                 requireActivity().navigateToActivity(LoginActivity::class.java, finish = true)
             }
-
         }
 
         //delete ads

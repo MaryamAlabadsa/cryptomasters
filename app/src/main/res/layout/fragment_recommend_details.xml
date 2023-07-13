@@ -35,14 +35,14 @@
 
             <TextView
                 android:id="@+id/tvDate"
-                android:paddingHorizontal="@dimen/dp8"
                 android:layout_width="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dp8"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sp12"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -56,30 +56,14 @@
                 android:textSize="@dimen/sp14"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/clImage"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp150"
-                android:layout_marginTop="@dimen/dp15"
-                app:cardCornerRadius="@dimen/dp5"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintTop_toBottomOf="@id/tvText">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivPostImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
-            </androidx.cardview.widget.CardView>
-
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp1"
-                android:layout_marginTop="@dimen/dp15"
                 android:alpha="0.3"
                 android:background="@color/grey"
-                app:layout_constraintTop_toBottomOf="@id/clImage" />
+                app:layout_constraintTop_toBottomOf="@id/tvText"
+                tools:layout_editor_absoluteY="226dp" />
 
 
             <TextView

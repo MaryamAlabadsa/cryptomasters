@@ -33,7 +33,7 @@ import java.io.File
 
 
 @AndroidEntryPoint
-class  ProfileFragment : BaseFragment<FragmentProfileBinding>() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private lateinit var appPagerAdapter: AppPagerAdapter
     val viewModel: ProfileViewModel by viewModels()
@@ -73,7 +73,7 @@ class  ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 it.error.isNotEmpty() -> requireActivity().crToast()
                 it.data != null && it.flag == 1 -> {
                     preferences.setUserProfile((it.data as ProfileResponse).profileObject!!)
-                    binding.tvName.text = preferences.getUserProfile() .name
+                    binding.tvName.text = preferences.getUserProfile().name
                     requireActivity().crToast(
                         requireActivity().getString(R.string.update_profile),
                         ToastType.SUCCESS
@@ -81,7 +81,7 @@ class  ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 }
                 it.data != null && it.flag == 0 -> {
                     viewModel.editProfileRequest = EditProfileRequest(
-                        name = preferences.getUserProfile() .name.toString(),
+                        name = preferences.getUserProfile().name.toString(),
                         avatar = it.data.toString()
                     )
                     viewModel.updateProfile()
@@ -94,9 +94,12 @@ class  ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private fun setUserInfo() {
         preferences.getUserProfile()
             .let {
-                binding.ivImage.loadWebImage(it .avatar + "")
-                binding.tvName.text = it .name
-                binding.tvPhone.text = it .phone
+                binding.ivImage.loadWebImage(it.avatar + "")
+                binding.tvName.text = it.name
+                if (it.phone != null)
+                    binding.tvPhone.text = it.phone
+                else
+                    binding.tvPhone.text = it.email
             }
     }
 

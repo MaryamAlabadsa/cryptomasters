@@ -196,15 +196,6 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         }
     }
 
-    fun handleLoading(binding: LoadingLayoutBinding, isError: Boolean) {
-        if (isError) {
-            binding.clOnLoading.visibility = View.GONE
-            binding.clLoading.visibility = View.VISIBLE
-            binding.clOnError.visibility = View.VISIBLE
-        } else {
-            binding.clLoading.visibility = View.GONE
-        }
-    }
 
 
 }

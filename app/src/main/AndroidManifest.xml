@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -17,10 +18,14 @@
         android:theme="@style/Theme.CryptoMasters"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AnalyticDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.analytic.AnalyticActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.chart.ChartActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".testActivity"
             android:exported="false" />
@@ -75,16 +80,20 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/picker_provider_paths" />
-        </provider>
-<!--        test ad   -->
-<!--         <meta-data-->
-<!--         android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--        android:value="ca-app-pub-6256561474578906~9857626767" />-->
-
-        <!--        real ad -->
+        </provider> <!-- test ad -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.APPLICATION_ID" -->
+        <!-- android:value="ca-app-pub-6256561474578906~9857626767" /> -->
+        <!-- real ad -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2194344378450720~6361123478" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
 
         <service
             android:name=".core.fcm.FcmService"

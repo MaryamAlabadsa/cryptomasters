@@ -2,10 +2,15 @@ package com.mas.cryptomasters.core.pref
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.common.reflect.TypeToken
 import com.google.gson.GsonBuilder
 import com.karumi.dexter.listener.PermissionRequestErrorListener
+import com.mas.cryptomasters.data.models.coin.Coins
 import com.mas.cryptomasters.data.response.ProfileObject
 import com.mas.cryptomasters.data.response.SettingsObject
+import com.mas.cryptomasters.data.response.home.Coin
+import com.mas.cryptomasters.data.response.home.PostsData
+import com.mas.cryptomasters.data.response.recommendations.RecommendData
 import com.mas.cryptomasters.utils.UpdateData
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -29,6 +34,10 @@ class PreferenceHelper @Inject constructor(@ApplicationContext context: Context)
     private val marketId = "marketId"
     private val high_24h = "high_24h"
     private val low_24h = "low_24h"
+    private val POSTS = "posta"
+    private val COINS = "COINS"
+    private val RULE = "RULE"
+    private val Recommend = "Recommend"
 
 
     override fun setUserProfile(userProfile: ProfileObject) {
@@ -38,6 +47,72 @@ class PreferenceHelper @Inject constructor(@ApplicationContext context: Context)
 
     override fun getUserProfile(): ProfileObject =
         gGson.fromJson(preferences.getString(userData, "{}"), ProfileObject::class.java)
+
+    fun setHomeContent(userProfile: List<PostsData>) {
+        val jsonString = gGson.toJson(userProfile)
+        preferences.edit()?.putString(POSTS, jsonString)?.apply()
+    }
+
+    fun getHomePosts(): List<PostsData> {
+        val jsonString = preferences.getString(POSTS, null)
+        return if (jsonString != null) {
+            val typeToken = object : TypeToken<List<PostsData>>() {}.type
+            gGson.fromJson(jsonString, typeToken) ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
+
+    fun setCoinsContent(userProfile: List<Coins>) {
+        val jsonString = gGson.toJson(userProfile)
+        preferences.edit()?.putString(COINS, jsonString)?.apply()
+    }
+
+    fun getCoinsContent(): List<Coins> {
+        val jsonString = preferences.getString(COINS, null)
+        return if (jsonString != null) {
+            val typeToken = object : TypeToken<List<Coins>>() {}.type
+            gGson.fromJson(jsonString, typeToken) ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
+
+    fun setRuleContent(userProfile: List<Coin>) {
+        val jsonString = gGson.toJson(userProfile)
+        preferences.edit()?.putString(RULE, jsonString)?.apply()
+    }
+
+    fun getRuleContent(): List<Coin> {
+        val jsonString = preferences.getString(RULE, null)
+        return if (jsonString != null) {
+            val typeToken = object : TypeToken<List<Coin>>() {}.type
+            gGson.fromJson(jsonString, typeToken) ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
+    fun setRecommend(userProfile: List<RecommendData>) {
+        val jsonString = gGson.toJson(userProfile)
+        preferences.edit()?.putString(Recommend, jsonString)?.apply()
+    }
+
+    fun getRecommend(): List<RecommendData> {
+        val jsonString = preferences.getString(Recommend, null)
+        return if (jsonString != null) {
+            val typeToken = object : TypeToken<List<RecommendData>>() {}.type
+            gGson.fromJson(jsonString, typeToken) ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
+
+    fun clearHomeData() {
+        preferences.edit()?.remove(POSTS)?.apply()
+        preferences.edit()?.remove(COINS)?.apply()
+        preferences.edit()?.remove(RULE)?.apply()
+        preferences.edit()?.remove(Recommend)?.apply()
+    }
 
     override fun clearUserData() {
         preferences.edit()?.putString(userData, "{}")?.apply()
@@ -83,11 +158,11 @@ class PreferenceHelper @Inject constructor(@ApplicationContext context: Context)
 
     }
 
-    override fun getFCMToken():String = preferences.getString(fcmToken, "NNNNNN").toString()
+    override fun getFCMToken(): String = preferences.getString(fcmToken, "NNNNNN").toString()
 
-    fun getMarketId():String = preferences.getString(marketId, "bitcoin").toString()
-    fun gethigh_24h():String = preferences.getFloat(high_24h, 0f).toString()
-    fun getlow_24h():String = preferences.getFloat(low_24h, 0f).toString()
+    fun getMarketId(): String = preferences.getString(marketId, "bitcoin").toString()
+    fun gethigh_24h(): String = preferences.getFloat(high_24h, 0f).toString()
+    fun getlow_24h(): String = preferences.getFloat(low_24h, 0f).toString()
 
     fun setMarketId(marketId: String, high: Double?, low: Double?) {
         val editor = preferences.edit()

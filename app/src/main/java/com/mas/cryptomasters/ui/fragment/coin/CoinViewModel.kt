@@ -22,7 +22,6 @@ class CoinViewModel @Inject constructor(val apiRepository: ApiRepository2) : Vie
     private var currentPage = 1
 
     fun initPagination() {
-//        currentPage = 1
         getCoins(currentPage)
     }
 
@@ -38,41 +37,4 @@ class CoinViewModel @Inject constructor(val apiRepository: ApiRepository2) : Vie
         }
     }
 
-//    fun fetchNextPage() {
-//        currentPage++
-//        getCoins(currentPage)
-//    }
-
 }
-//
-//@HiltViewModel
-//class CoinViewModel @Inject constructor(val apiRepository: ApiRepository2) : ViewModel() {
-//    val coinMutable: MutableLiveData<Response<Any?>> = MutableLiveData()
-//    private var currentPage = 1
-//    init {
-//        getCoinContent(currentPage)
-//    }
-//
-//
-//    private fun getCoinContent(currentPage: Int) {
-//        viewModelScope.launch {
-//            apiRepository.getCoins(currentPage).let {
-//                when (it.isRequestSuccess(it.code())) {
-//                    RESPONSE.AUT -> coinMutable.postValue(Response(reLogin = true))
-//                    RESPONSE.ERROR -> coinMutable.postValue(Response(error = it.toString()))
-//                    RESPONSE.SUCCESS -> coinMutable.postValue(
-//                        Response(
-//                            data =
-//                            it.body(),
-//                            flag = 1
-//                        )
-//                    )
-//                }
-//            }
-//        }
-//    }
-//    fun fetchNextPage() {
-//        currentPage++
-//        getCoinContent(currentPage)
-//    }
-//}

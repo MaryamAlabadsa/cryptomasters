@@ -67,20 +67,6 @@
             android:textSize="@dimen/sp14"
             android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/clImage"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp150"
-            android:layout_marginTop="@dimen/dp8"
-            app:cardCornerRadius="@dimen/dp5"
-            app:cardUseCompatPadding="true">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivPostImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
-        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

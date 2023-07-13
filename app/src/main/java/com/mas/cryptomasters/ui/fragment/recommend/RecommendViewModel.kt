@@ -1,5 +1,6 @@
 package com.mas.cryptomasters.ui.fragment.recommend
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,13 +20,41 @@ class RecommendViewModel @Inject constructor(private val apiRepository: ApiRepos
 
     lateinit var voteRequest: VoteRequest
 
-    init {
-        getRecommendList()
-    }
+//    init {
+//        getDailyRecommendList()
+//    }
 
-    fun getRecommendList() {
+    fun getDailyRecommendList(page: Int?) {
         viewModelScope.launch {
-            apiRepository.getRecommendations()
+            if (page != null) {
+                apiRepository.getDailyRecommendations(page)
+                    .let {
+                        Log.e("error_mart",it.code().toString())
+                        when (it.isRequestSuccess(it.code())) {
+                            RESPONSE.AUT -> mutableRecommend.postValue(Response(reLogin = true))
+                            RESPONSE.ERROR -> mutableRecommend.postValue(Response(error = "${it.errorBody()}"))
+                            RESPONSE.SUCCESS -> mutableRecommend.postValue(Response(it.body()!!))
+                        }
+                    }
+            }
+        }
+    }
+    fun getMonthlyRecommendList(page: Int) {
+        viewModelScope.launch {
+            apiRepository.getMonthlyRecommendations(page)
+                .let {
+                    when (it.isRequestSuccess(it.code())) {
+                        RESPONSE.AUT -> mutableRecommend.postValue(Response(reLogin = true))
+                        RESPONSE.ERROR -> mutableRecommend.postValue(Response(error = "${it.errorBody()}"))
+                        RESPONSE.SUCCESS -> mutableRecommend.postValue(Response(it.body()!!))
+
+                    }
+                }
+        }
+    }
+    fun getWeaklyRecommendList(page: Int) {
+        viewModelScope.launch {
+            apiRepository.getWeaklyRecommendations(page)
                 .let {
                     when (it.isRequestSuccess(it.code())) {
                         RESPONSE.AUT -> mutableRecommend.postValue(Response(reLogin = true))

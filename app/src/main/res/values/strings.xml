@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Crypto Masters</string>
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
     <string name="welcome_text">Welcome to the largest application for filtering cryptocurrency news</string>
     <string name="login">Login</string>
     <string name="browse_now">Browse Now</string>
@@ -131,6 +134,10 @@
     <string name="year">year</string>
     <string name="five_year">5 year</string>
     <string name="day_range">Range of day</string>
+    <string name="Weakly">Weakly</string>
+    <string name="Daily">Daily</string>
+    <string name="Monthly">Monthly</string>
+    <string name="analysis">Analysis</string>
 
     <string-array name="reports_list">
         <item>Nudity</item>

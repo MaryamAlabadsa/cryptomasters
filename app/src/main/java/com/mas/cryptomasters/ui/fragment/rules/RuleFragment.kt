@@ -2,6 +2,7 @@ package com.mas.cryptomasters.ui.fragment.rules
 
 import android.content.Intent
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,29 +56,37 @@ class RuleFragment : BaseFragment<FragmentRuleBinding>() {
         binding.svSearch.setOnClickListener {
             binding.svSearch.isIconified = false;
         }
-
-        //when get result
-        viewModel.mutableRules.observe(this) { rules ->
-            when {
-                rules.reLogin -> requireActivity().reLogin(preferences)
-                rules.error.isNotEmpty() -> {
-                    handleLoading(binding.loading, true)
-                    requireContext().crToast()
-                }
-                else -> {
-                    handleLoading(binding.loading, false)
-                    val coins = rules.data?.let { data ->
-                        when (data) {
-                            is CoinsResponse -> data.coins
-                            is SearchResponse -> data.coins
-                            else -> emptyList()
-                        }
-                    } ?: emptyList()
-
-                    updateCoinsAdapter(coins)
+        val coinsData = preferences.getRuleContent()
+        if (coinsData.isEmpty()) {
+            viewModel.mutableRules.observe(this) { rules ->
+                when {
+                    rules.reLogin -> requireActivity().reLogin(preferences)
+                    rules.error.isNotEmpty() -> {
+                        handleLoading(binding.loading, true)
+                        requireContext().crToast()
+                    }
+                    else -> {
+                        handleLoading(binding.loading, false)
+                        val coins = rules.data?.let { data ->
+                            when (data) {
+                                is CoinsResponse -> data.coins
+                                is SearchResponse -> data.coins
+                                else -> emptyList()
+                            }
+                        } ?: emptyList()
+                        preferences.setRuleContent(coins)
+                        updateCoinsAdapter(coins)
+                    }
                 }
             }
+        } else {
+//            Extensions.hideProgress()
+            handleLoading(binding.loading, false)
+            updateCoinsAdapter(coinsData)
+
+//            coinsAdapter.updateAdapter(homePosts) // Update the adapter with the stored data
         }
+        //when get result
         coinsAdapter.updateAdapter(coinList, binding.svSearch.query.toString())
 
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -102,46 +111,6 @@ class RuleFragment : BaseFragment<FragmentRuleBinding>() {
             viewModel.getAllCoins()
             true
         }
-
-
-//        binding.svSearch.setOnQueryTextListener(object :
-//            SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                searchCoinList.clear()
-//
-//                if (newText?.length!! >= 2) {
-//
-//                    if (position == 1 || position == 2) {
-//                        for (item in listedCoinList) {
-//                            if (item.name.contains(newText)) {
-//                                searchCoinList.add(item)
-//                            }
-//                        }
-//                        coinsAdapter.updateAdapter(searchCoinList)
-//                    } else {
-//                        for (item in coinList) {
-//                            if (item.name.contains(newText)) {
-//                                searchCoinList.add(item)
-//                            }
-//                        }
-//                        coinsAdapter.updateAdapter(searchCoinList)
-//                    }
-//                }
-//                return false
-//            }
-//        })
-//        binding.svSearch.setOnCloseListener {
-//            if (position == 1 || position == 2) {
-//                coinsAdapter.updateAdapter(listedCoinList)
-//            } else {
-//                coinsAdapter.updateAdapter(coinList)
-//            }
-//            false
-//        }
 
         // check the tap
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

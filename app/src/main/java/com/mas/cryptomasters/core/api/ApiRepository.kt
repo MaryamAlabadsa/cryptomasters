@@ -19,6 +19,7 @@ class ApiRepository @Inject constructor(private val apiService: ApiService) {
         apiService.updateProfile(body)
 
     suspend fun login(body: Any) = apiService.login(body)
+    suspend fun loginByGoogle(body: Any) = apiService.loginByGoogle(body)
     suspend fun register(body: Any): Response<ProfileResponse> = apiService.register(body)
     suspend fun getHome() = apiService.getHome()
     suspend fun contact(body: ContactRequest) = apiService.contact(body)
@@ -28,6 +29,10 @@ class ApiRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun updatePost(id: String, body: CreatePostRequest): Response<UpdatePostResponse> =
         apiService.updatePost(id, body)
 
+    suspend fun getDailyRecommendations(page: Int = 1): Response<Recommendations> = apiService.getDailyRecommendations(page)
+    suspend fun getMonthlyRecommendations(page: Int = 1): Response<Recommendations> = apiService.getMonthlyRecommendations(page)
+    suspend fun getWeaklyRecommendations(page: Int = 1): Response<Recommendations> = apiService.getWeaklyRecommendations(page)
+    suspend fun getAnalytic(): Response<Analytic> = apiService.getAnalytic()
     suspend fun getRecommendations(): Response<Recommendations> = apiService.getRecommendations()
     suspend fun setVote(body: VoteRequest): Response<BaseResponse> = apiService.setVote(body)
     suspend fun getCoins(): Response<CoinsResponse> = apiService.getCoins()

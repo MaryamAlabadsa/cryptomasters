@@ -24,7 +24,7 @@ android {
             storeFile file('D:\\Crypto Masters app 2\\Crypto Masters app\\keys\\key')
         }
     }
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.mas.cryptomasters"
@@ -153,6 +153,11 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 //
 //    implementation 'com.github.mikephil:charting:2.2.0'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+//    //KM Popup Image Slider for Android //for post image
+//    implementation 'com.github.smhdk:KM-Popup-Image-Slider:v1.2.1'
 
 }
 kapt {

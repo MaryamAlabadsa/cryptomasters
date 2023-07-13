@@ -38,9 +38,9 @@ class RecommendDetailsFragment : BaseFragment<FragmentRecommendDetailsBinding>()
                 recommendData.let {
                     binding.tvTitle.text = it.title
                     binding.tvText.text = it.content
-                    binding.tvDate.text = it.createdAt.setTimeFormat(binding.tvDate.context)
+                    binding.tvDate.text = it.createdAt?.setTimeFormat(binding.tvDate.context) ?: ""
 
-                        binding.ivPostImage.loadWebImage(it.image + "")
+//                        binding.ivPostImage.loadWebImage(it.image + "")
                     "${getString(R.string.up)} (${
                         it.upCount.toString().percentageFormat()
                     } ${getString(R.string.user)})".also { text ->
@@ -118,10 +118,12 @@ class RecommendDetailsFragment : BaseFragment<FragmentRecommendDetailsBinding>()
                 voteValue = 1
             }
 
-            viewModel.voteRequest = VoteRequest(
-                recommendation_id = recommendData.id,
-                vote = voteValue
-            )
+            viewModel.voteRequest = recommendData.id?.let {
+                VoteRequest(
+                    recommendation_id = it,
+                    vote = voteValue
+                )
+            }!!
 
             requireContext().showProgress()
             viewModel.setVote()
